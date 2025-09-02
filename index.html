@@ -1,357 +1,299 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FIB Evidence Commands</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #0d1b2a, #1b263b);
-            color: #e0e1dd;
-            min-height: 100vh;
-            padding: 20px;
-            cursor: none;
-        }
-        
-        .custom-cursor {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: #ff0000;
-            mix-blend-mode: difference;
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            transition: transform 0.1s;
-        }
-        
-        .cursor-dot {
-            position: fixed;
-            width: 4px;
-            height: 4px;
-            background-color: #fff;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 10000;
-            transform: translate(-50%, -50%);
-        }
-        
-        header {
-            text-align: center;
-            padding: 20px 0;
-            margin-bottom: 30px;
-            border-bottom: 1px solid #415a77;
-        }
-        
-        h1 {
-            font-size: 2.5rem;
-            color: #ff0000;
-            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
-            margin-bottom: 10px;
-        }
-        
-        .subtitle {
-            font-size: 1.2rem;
-            color: #e0e1dd;
-            opacity: 0.8;
-        }
-        
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .command-section {
-            background: rgba(26, 36, 56, 0.8);
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-left: 4px solid #ff0000;
-        }
-        
-        .section-title {
-            font-size: 1.5rem;
-            color: #ffcc00;
-            margin-bottom: 15px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #415a77;
-        }
-        
-        .command {
-            background: rgba(13, 27, 42, 0.7);
-            border-radius: 6px;
-            padding: 12px 15px;
-            margin: 10px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-        
-        .command:hover {
-            background: rgba(13, 27, 42, 0.9);
-            transform: translateY(-2px);
-        }
-        
-        .command-text {
-            font-family: 'Courier New', monospace;
-            font-size: 1rem;
-            color: #e0e1dd;
-        }
-        
-        .copy-btn {
-            background: #415a77;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            padding: 6px 12px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        
-        .copy-btn:hover {
-            background: #ff0000;
-        }
-        
-        .notification {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 5px;
-            display: none;
-            z-index: 1000;
-            border-left: 4px solid #ff0000;
-        }
-        
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            padding: 20px;
-            color: #778da9;
-            font-size: 0.9rem;
-        }
-        
-        @media (max-width: 768px) {
-            .command {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .copy-btn {
-                margin-top: 10px;
-                align-self: flex-end;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FIB Evidence Commands</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0b0b0b, #1a1a1a);
+      color: #eaeaea;
+      min-height: 100vh;
+      padding: 20px;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px 0;
+      margin-bottom: 30px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    header img {
+      height: 70px;
+      vertical-align: middle;
+      margin-right: 12px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #f1c40f;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      color: #aaa;
+      margin-top: 8px;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .command-section {
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      color: #f1c40f;
+      margin-bottom: 15px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 5px;
+    }
+
+    .command {
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 8px;
+      padding: 12px 15px;
+      margin: 8px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s ease, transform 0.2s ease;
+      cursor: pointer;
+    }
+
+    .command:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .command-text {
+      font-family: 'Courier New', monospace;
+      font-size: 0.95rem;
+      color: #eaeaea;
+      flex: 1;
+    }
+
+    .note {
+      font-size: 0.85rem;
+      font-style: italic;
+      color: #ccc;
+      margin: 8px 0;
+    }
+
+    .copy-btn {
+      background: rgba(241, 196, 15, 0.9);
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.2s ease, transform 0.2s ease;
+      margin-left: 10px;
+    }
+
+    .copy-btn:hover {
+      background: #e2b607;
+      transform: scale(1.05);
+    }
+
+    .notification {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(0, 0, 0, 0.6);
+      color: #f1c40f;
+      padding: 10px 18px;
+      border-radius: 8px;
+      display: none;
+      z-index: 1000;
+      font-size: 0.9rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 15px;
+      font-size: 0.85rem;
+      color: #aaa;
+    }
+
+    footer span {
+      color: #f1c40f;
+      font-weight: bold;
+    }
+
+    /* Custom Animated Cursor */
+    .cursor {
+      position: fixed;
+      width: 18px;
+      height: 18px;
+      border: 2px solid #f1c40f;
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease-out;
+      z-index: 9999;
+    }
+
+    .cursor-dot {
+      position: fixed;
+      width: 6px;
+      height: 6px;
+      background: #f1c40f;
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 10000;
+    }
+  </style>
 </head>
 <body>
-    <div class="custom-cursor"></div>
-    <div class="cursor-dot"></div>
-    
-    <header>
-        <h1>FIB EVIDENCE COMMANDS</h1>
-        <p class="subtitle">Click any command to copy it to clipboard</p>
-    </header>
-    
-    <div class="container">
-        <div class="command-section">
-            <h2 class="section-title">Attaching Bodycam (Uniform)</h2>
-            <div class="command">
-                <span class="command-text">/me Takes out bodycam, attaches it to chest, checks its ballistic, water proof</span>
-                <button class="copy-btn">Copy</button>
-            </div>
-            <div class="command">
-                <span class="command-text">/me makes sure it is recording and checks for the red light</span>
-                <button class="copy-btn">Copy</button>
-            </div>
-            <div class="command">
-                <span class="command-text">/do It is recording, is ballistic and water proof</span>
-                <button class="copy-btn">Copy</button>
-            </div>
-            <div class="command">
-                <span class="command-text">/me connects PDA to the nearest cell tower</span>
-                <button class="copy-btn">Copy</button>
-            </div>
-        </div>
-        
-        <div class="command-section">
-            <h2 class="section-title">Attaching Bodycam (UnderCover)</h2>
-            <div class="command">
-                <span class="command-text">/me takes out bodycam and attaches it to belt, hides it, checks its ballistic and water proof</span>
-                <button class="copy-btn">Copy</button>
-            </div>
-            <div class="command">
-                <span class="command-text">/me makes sure it is recording and checks for the red light</span>
-                <button class="copy-btn">Copy</button>
-            </div>
-            <div class="command">
-                <span class="command-text">/do It is recording, is ballistic and water proof</span>
-                <button class="copy-btn">Copy</button>
-            </div>
-            <div class="command">
-                <span class="command-text">/me connects PDA to the nearest cell tower</span>
-                <button class="copy-btn">Copy</button>
-            </div>
-            <div class="command">
-                <span class="command-text">/me takes the FIB drone from the trunk and puts it in the backpack</span>
-                <button class="copy-btn">Copy</button>
-            </div>
-        </div>
-        
-        <div class="command-section">
-            <h2 class="section-title">Refreshing Bodycam</h2>
-            <div class="command">
-                <span class="command-text">/me refreshing bodycam</span>
-                <button class="copy-btn">Copy</button>
-            </div>
-            <div class="command">
-                <span class="command-text">/do It is recording</span>
-                <button class="copy-btn">Copy</button>
-            </div>
-        </div>
-        
-        <div class="command-section">
-            <h2 class="section-title">Drone Commands</h2>
-            <div class="command">
-                <span class="command-text">(While in Work Uniform) /me launches the LSPD Drone</span>
-                <button class="copy-btn">Copy</button>
-            </div>
-            <div class="command">
-                <span class="command-text">(While Undercover) /me takes the LSPD drone from the trunk and puts it in the backpack</span>
-                <button class="copy-btn">Copy</button>
-            </div>
-            <div class="command">
-                <span class="command-text">/me takes the LSPD drone from the backpack and launches it</span>
-                <button class="copy-btn">Copy</button>
-            </div>
-            <div class="command">
-                <span class="command-text">/me takes the LSPD drone from the ground and puts it in the backpack</span>
-                <button class="copy-btn">Copy</button>
-            </div>
-        </div>
-        
-        <div class="command-section">
-            <h2 class="section-title">Taking Evidence</h2>
-            <div class="command">
-                <span class="command-text">(When License Plate Not Visible of Car) /me feels the edges of the vehicle for VIN and checks for ownership</span>
-                <button class="copy-btn">Copy</button>
-            </div>
-            <div class="command">
-                <span class="command-text">(When License Plate Not Visible of Bike) /me checks the VIN from the steering neck of the bike and checks for ownership</span>
-                <button class="copy-btn">Copy</button>
-            </div>
-            <div class="command">
-                <span class="command-text">*Then press G on vehicle and view vehicle information.*</span>
-                <button class="copy-btn">Copy</button>
-            </div>
-        </div>
-        
-        <div class="command-section">
-            <h2 class="section-title">Saving Bodycam</h2>
-            <div class="command">
-                <span class="command-text">/me saves bodycam, uploads it to the FIB Cloud and continues recording</span>
-                <button class="copy-btn">Copy</button>
-            </div>
-            <div class="command">
-                <span class="command-text">/do It is recording</span>
-                <button class="copy-btn">Copy</button>
-            </div>
-        </div>
-    </div>
-    
-    <div class="notification" id="copyNotification">Command copied to clipboard!</div>
-    
-    <footer>
-        <p>FIB Evidence Commands Hub | Designed for roleplay use</p>
-    </footer>
+  <div class="cursor"></div>
+  <div class="cursor-dot"></div>
 
-    <script>
-        // Custom cursor
-        const cursor = document.querySelector('.custom-cursor');
-        const cursorDot = document.querySelector('.cursor-dot');
-        
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            
-            cursorDot.style.left = e.clientX + 'px';
-            cursorDot.style.top = e.clientY + 'px';
+  <header class="glass">
+    <img src="fib-logo.png" alt="FIB Logo">
+    <h1>FIB Evidence Commands</h1>
+    <p class="subtitle">Click any command to copy it</p>
+  </header>
+
+  <div class="container">
+
+    <!-- Attaching Bodycam (Uniform) -->
+    <div class="command-section glass">
+      <h2 class="section-title">Attaching Bodycam (Uniform)</h2>
+      <div class="command"><span class="command-text">/me Takes out bodycam, attaches it to chest, checks its ballistic, water proof</span><button class="copy-btn">Copy</button></div>
+      <div class="command"><span class="command-text">/me makes sure it is recording and checks for the red light</span><button class="copy-btn">Copy</button></div>
+      <div class="command"><span class="command-text">/do It is recording, is ballistic and water proof</span><button class="copy-btn">Copy</button></div>
+      <div class="command"><span class="command-text">/me connects PDA to the nearest cell tower</span><button class="copy-btn">Copy</button></div>
+    </div>
+
+    <!-- Attaching Bodycam (Undercover) -->
+    <div class="command-section glass">
+      <h2 class="section-title">Attaching Bodycam (Undercover)</h2>
+      <div class="command"><span class="command-text">/me takes out bodycam and attaches it to belt, hides it, checks its ballistic and water proof</span><button class="copy-btn">Copy</button></div>
+      <div class="command"><span class="command-text">/me makes sure it is recording and checks for the red light</span><button class="copy-btn">Copy</button></div>
+      <div class="command"><span class="command-text">/do It is recording, is ballistic and water proof</span><button class="copy-btn">Copy</button></div>
+      <div class="command"><span class="command-text">/me connects PDA to the nearest cell tower</span><button class="copy-btn">Copy</button></div>
+      <div class="command"><span class="command-text">/me takes the FIB drone from the trunk and puts it in the backpack</span><button class="copy-btn">Copy</button></div>
+    </div>
+
+    <!-- Refreshing Bodycam -->
+    <div class="command-section glass">
+      <h2 class="section-title">Refreshing Bodycam</h2>
+      <div class="command"><span class="command-text">/me refreshing bodycam</span><button class="copy-btn">Copy</button></div>
+      <div class="command"><span class="command-text">/do It is recording</span><button class="copy-btn">Copy</button></div>
+    </div>
+
+    <!-- Drone Commands -->
+    <div class="command-section glass">
+      <h2 class="section-title">Drone Commands</h2>
+      <h3 class="note">(While in Work Uniform)</h3>
+      <div class="command"><span class="command-text">/me launches the LSPD Drone</span><button class="copy-btn">Copy</button></div>
+      <h3 class="note">(While Undercover)</h3>
+      <div class="command"><span class="command-text">/me takes the LSPD drone from the trunk and puts it in the backpack</span><button class="copy-btn">Copy</button></div>
+      <div class="command"><span class="command-text">/me takes the LSPD drone from the backpack and launches it</span><button class="copy-btn">Copy</button></div>
+      <div class="command"><span class="command-text">/me takes the LSPD drone from the ground and puts it in the backpack</span><button class="copy-btn">Copy</button></div>
+    </div>
+
+    <!-- Taking Evidence -->
+    <div class="command-section glass">
+      <h2 class="section-title">Taking Evidence</h2>
+      <h3 class="note">(When License Plate Not Visible of Car)</h3>
+      <div class="command"><span class="command-text">/me feels the edges of the vehicle for VIN and checks for ownership</span><button class="copy-btn">Copy</button></div>
+      <h3 class="note">(When License Plate Not Visible of Bike)</h3>
+      <div class="command"><span class="command-text">/me checks the VIN from the steering neck of the bike and checks for ownership</span><button class="copy-btn">Copy</button></div>
+      <p class="note">Then press G on vehicle and view vehicle information.</p>
+    </div>
+
+    <!-- Saving Bodycam -->
+    <div class="command-section glass">
+      <h2 class="section-title">Saving Bodycam</h2>
+      <div class="command"><span class="command-text">/me saves bodycam, uploads it to the FIB Cloud and continues recording</span><button class="copy-btn">Copy</button></div>
+      <div class="command"><span class="command-text">/do It is recording</span><button class="copy-btn">Copy</button></div>
+    </div>
+
+  </div>
+
+  <div class="notification" id="copyNotification">✅ Command copied!</div>
+
+  <footer>
+    <p>❤️ Made By <span>Kaizen (En3)</span></p>
+  </footer>
+
+  <script>
+    // Cursor
+    const cursor = document.querySelector('.cursor');
+    const cursorDot = document.querySelector('.cursor-dot');
+
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+      cursorDot.style.left = e.clientX + 'px';
+      cursorDot.style.top = e.clientY + 'px';
+    });
+
+    const links = document.querySelectorAll('button, .command');
+    links.forEach(link => {
+      link.addEventListener('mouseenter', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(1.6)';
+      });
+      link.addEventListener('mouseleave', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+      });
+    });
+
+    // Copy
+    const copyButtons = document.querySelectorAll('.copy-btn');
+    const notification = document.getElementById('copyNotification');
+    const commands = document.querySelectorAll('.command');
+
+    copyButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const commandText = button.previousElementSibling.textContent;
+        navigator.clipboard.writeText(commandText).then(() => {
+          notification.style.display = 'block';
+          setTimeout(() => { notification.style.display = 'none'; }, 2000);
         });
-        
-        // Button hover effect
-        const buttons = document.querySelectorAll('.copy-btn');
-        buttons.forEach(button => {
-            button.addEventListener('mouseenter', () => {
-                cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
-                cursor.style.backgroundColor = '#ffcc00';
-            });
-            
-            button.addEventListener('mouseleave', () => {
-                cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-                cursor.style.backgroundColor = '#ff0000';
-            });
+      });
+    });
+
+    commands.forEach(command => {
+      command.addEventListener('click', (e) => {
+        if (e.target.classList.contains('copy-btn')) return;
+        const commandText = command.querySelector('.command-text').textContent;
+        navigator.clipboard.writeText(commandText).then(() => {
+          notification.style.display = 'block';
+          setTimeout(() => { notification.style.display = 'none'; }, 2000);
         });
-        
-        // Command hover effect
-        const commands = document.querySelectorAll('.command');
-        commands.forEach(command => {
-            command.addEventListener('mouseenter', () => {
-                cursor.style.transform = 'translate(-50%, -50%) scale(1.2)';
-            });
-            
-            command.addEventListener('mouseleave', () => {
-                cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-            });
-        });
-        
-        // Copy functionality
-        const copyButtons = document.querySelectorAll('.copy-btn');
-        const notification = document.getElementById('copyNotification');
-        
-        copyButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const commandText = button.previousElementSibling.textContent;
-                navigator.clipboard.writeText(commandText).then(() => {
-                    // Show notification
-                    notification.style.display = 'block';
-                    setTimeout(() => {
-                        notification.style.display = 'none';
-                    }, 2000);
-                }).catch(err => {
-                    console.error('Failed to copy: ', err);
-                });
-            });
-        });
-        
-        // Allow clicking on the entire command area to copy
-        commands.forEach(command => {
-            command.addEventListener('click', (e) => {
-                if (e.target.classList.contains('copy-btn')) return;
-                
-                const commandText = command.querySelector('.command-text').textContent;
-                navigator.clipboard.writeText(commandText).then(() => {
-                    // Show notification
-                    notification.style.display = 'block';
-                    setTimeout(() => {
-                        notification.style.display = 'none';
-                    }, 2000);
-                }).catch(err => {
-                    console.error('Failed to copy: ', err);
-                });
-            });
-        });
-    </script>
+      });
+    });
+  </script>
 </body>
 </html>
