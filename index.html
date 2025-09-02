@@ -3,216 +3,249 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FIB Evidence Commands</title>
+  <title>FIB Evidence Portal</title>
   <style>
     /* Background with particles */
     body {
       margin: 0;
-      padding: 0;
       height: 100vh;
-      background: linear-gradient(135deg, #0a0f1c, #1c2333);
-      font-family: "Segoe UI", sans-serif;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #0f0f0f;
+      overflow: hidden;
       display: flex;
       justify-content: center;
-      align-items: flex-start;
-      color: white;
-      overflow-x: hidden;
+      align-items: center;
     }
-
     canvas#particles {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       z-index: 0;
     }
 
+    /* Glass container */
     .container {
       position: relative;
       z-index: 1;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(14px);
+      border-radius: 20px;
+      padding: 30px;
       width: 90%;
       max-width: 850px;
-      margin: 40px auto;
-      padding: 20px;
-      backdrop-filter: blur(14px) saturate(160%);
-      -webkit-backdrop-filter: blur(14px) saturate(160%);
-      background: rgba(17, 25, 40, 0.55);
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      color: white;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+      overflow-y: auto;
+      max-height: 90vh;
     }
 
-    .logo {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 25px;
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
     }
-    .logo img {
+    .header h1 {
+      font-size: 2rem;
+      letter-spacing: 2px;
+      margin: 10px 0;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #ffffff, #9e9e9e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .header img {
       max-width: 120px;
-      filter: drop-shadow(0 0 8px rgba(0,0,0,0.6));
+      margin-top: 10px;
     }
 
+    /* Search Bar */
+    .search {
+      width: 100%;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.12);
+      color: white;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+    .search:focus {
+      outline: none;
+      box-shadow: 0 0 10px rgba(255,255,255,0.3);
+    }
+
+    /* Sections */
     h2 {
-      margin-top: 30px;
-      margin-bottom: 15px;
-      font-size: 1.6rem;
-      font-weight: 600;
-      color: #fff;
-      border-left: 4px solid #4db5ff;
-      padding-left: 10px;
+      font-size: 1.3rem;
+      margin: 25px 0 10px;
+      color: #f0f0f0;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      padding-bottom: 5px;
     }
-
-    .command-block {
+    .command {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(255, 255, 255, 0.07);
+      background: rgba(255, 255, 255, 0.08);
+      padding: 10px 15px;
       border-radius: 12px;
-      padding: 10px 14px;
-      margin: 10px 0;
-      font-family: monospace;
-      font-size: 0.95rem;
+      margin: 8px 0;
       transition: background 0.3s ease;
     }
-    .command-block:hover {
-      background: rgba(255, 255, 255, 0.12);
+    .command:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+    .command em {
+      font-size: 0.9rem;
+      opacity: 0.8;
     }
 
-    .command-text {
-      color: #e5e5e5;
-      white-space: pre-wrap;
-    }
-
-    .copy-btn {
-      background: rgba(77, 181, 255, 0.15);
-      border: 1px solid rgba(77, 181, 255, 0.5);
-      color: #4db5ff;
-      border-radius: 8px;
-      padding: 5px 12px;
+    /* Copy button */
+    button.copy {
+      background: rgba(255,255,255,0.15);
+      border: none;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 10px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: background 0.3s ease, transform 0.2s ease;
     }
-    .copy-btn:hover {
-      background: rgba(77, 181, 255, 0.25);
+    button.copy:hover {
+      background: rgba(255,255,255,0.25);
+      transform: scale(1.05);
     }
 
-    em {
+    /* Footer credits */
+    .footer {
+      margin-top: 25px;
+      text-align: center;
       font-size: 0.85rem;
-      color: #cfd6e6;
-      font-style: italic;
-      opacity: 0.85;
+      color: rgba(255,255,255,0.8);
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(8px);
+      padding: 8px 12px;
+      border-radius: 12px;
+      animation: fadeIn 1.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
   <canvas id="particles"></canvas>
+
   <div class="container">
-    <div class="logo">
+    <!-- Header -->
+    <div class="header">
+      <h1>FIB Evidence Portal</h1>
       <img src="https://raw.githubusercontent.com/kaipluxury/Fib-Evidence-Commands/refs/heads/main/1756827759967.png" alt="FIB Logo">
     </div>
 
-    <h2>Attaching Bodycam (Uniform)</h2>
-    <div class="command-block"><span class="command-text">/me Takes out bodycam, attaches it to chest, checks its ballistic, water proof</span><button class="copy-btn">Copy</button></div>
-    <div class="command-block"><span class="command-text">/me makes sure it is recording and checks for the red light</span><button class="copy-btn">Copy</button></div>
-    <div class="command-block"><span class="command-text">/do It is recording, is ballistic and water proof</span><button class="copy-btn">Copy</button></div>
-    <div class="command-block"><span class="command-text">/me connects PDA to the nearest cell tower</span><button class="copy-btn">Copy</button></div>
+    <!-- Search Bar -->
+    <input type="text" class="search" id="searchInput" placeholder="🔍 Filter commands...">
 
-    <h2>Attaching Bodycam (UnderCover)</h2>
-    <div class="command-block"><span class="command-text">/me takes out bodycam and attaches it to belt, hides it, checks its ballistic and water proof</span><button class="copy-btn">Copy</button></div>
-    <div class="command-block"><span class="command-text">/me makes sure it is recording and checks for the red light</span><button class="copy-btn">Copy</button></div>
-    <div class="command-block"><span class="command-text">/do It is recording, is ballistic and water proof</span><button class="copy-btn">Copy</button></div>
-    <div class="command-block"><span class="command-text">/me connects PDA to the nearest cell tower</span><button class="copy-btn">Copy</button></div>
-    <div class="command-block"><span class="command-text">/me takes the FIB drone from the trunk and puts it in the backpack</span><button class="copy-btn">Copy</button></div>
+    <!-- Sections -->
+    <h2>Attaching Bodycam (Uniform)</h2>
+    <div class="command">/me Takes out bodycam, attaches it to chest, checks its ballistic, water proof <button class="copy">Copy</button></div>
+    <div class="command">/me makes sure it is recording and checks for the red light <button class="copy">Copy</button></div>
+    <div class="command">/do It is recording, is ballistic and water proof <button class="copy">Copy</button></div>
+    <div class="command">/me connects PDA to the nearest cell tower <button class="copy">Copy</button></div>
+
+    <h2>Attaching Bodycam (Undercover)</h2>
+    <div class="command">/me takes out bodycam and attaches it to belt, hides it, checks its ballistic and water proof <button class="copy">Copy</button></div>
+    <div class="command">/me makes sure it is recording and checks for the red light <button class="copy">Copy</button></div>
+    <div class="command">/do It is recording, is ballistic and water proof <button class="copy">Copy</button></div>
+    <div class="command">/me connects PDA to the nearest cell tower <button class="copy">Copy</button></div>
+    <div class="command">/me takes the FIB drone from the trunk and puts it in the backpack <button class="copy">Copy</button></div>
 
     <h2>Refreshing Bodycam</h2>
-    <div class="command-block"><span class="command-text">/me refreshing bodycam</span><button class="copy-btn">Copy</button></div>
-    <div class="command-block"><span class="command-text">/do It is recording</span><button class="copy-btn">Copy</button></div>
+    <div class="command">/me refreshing bodycam <button class="copy">Copy</button></div>
+    <div class="command">/do It is recording <button class="copy">Copy</button></div>
 
-    <h2>Drone Commands</h2>
-    <em>(While in Work Uniform)</em>
-    <div class="command-block"><span class="command-text">/me launches the LSPD Drone</span><button class="copy-btn">Copy</button></div>
-    <em>(While Undercover)</em>
-    <div class="command-block"><span class="command-text">/me takes the LSPD drone from the trunk and puts it in the backpack</span><button class="copy-btn">Copy</button></div>
-    <div class="command-block"><span class="command-text">/me takes the LSPD drone from the backpack and launches it</span><button class="copy-btn">Copy</button></div>
-    <div class="command-block"><span class="command-text">/me takes the LSPD drone from the ground and puts it in the backpack</span><button class="copy-btn">Copy</button></div>
+    <h2>Drone Commands (While in Work Uniform)</h2>
+    <div class="command">/me launches the LSPD Drone <button class="copy">Copy</button></div>
+
+    <h2>Drone Commands (While Undercover)</h2>
+    <div class="command">/me takes the LSPD drone from the trunk and puts it in the backpack <button class="copy">Copy</button></div>
+    <div class="command">/me takes the LSPD drone from the backpack and launches it <button class="copy">Copy</button></div>
+    <div class="command">/me takes the LSPD drone from the ground and puts it in the backpack <button class="copy">Copy</button></div>
 
     <h2>Taking Evidence</h2>
-    <em>(When License Plate Not Visible of Car)</em>
-    <div class="command-block"><span class="command-text">/me feels the edges of the vehicle for VIN and checks for ownership</span><button class="copy-btn">Copy</button></div>
-    <em>(When License Plate Not Visible of Bike)</em>
-    <div class="command-block"><span class="command-text">/me checks the VIN from the steering neck of the bike and checks for ownership</span><button class="copy-btn">Copy</button></div>
-    <em>*Then press G on vehicle and view vehicle information.*</em>
+    <div class="command"><em>(When License Plate Not Visible of Car)</em> /me feels the edges of the vehicle for VIN and checks for ownership <button class="copy">Copy</button></div>
+    <div class="command"><em>(When License Plate Not Visible of Bike)</em> /me checks the VIN from the steering neck of the bike and checks for ownership <button class="copy">Copy</button></div>
+    <div class="command"><em>*Then press G on vehicle and view vehicle information.*</em></div>
 
     <h2>Saving Bodycam</h2>
-    <div class="command-block"><span class="command-text">/me saves bodycam, uploads it to the FIB Cloud and continues recording</span><button class="copy-btn">Copy</button></div>
-    <div class="command-block"><span class="command-text">/do It is recording</span><button class="copy-btn">Copy</button></div>
+    <div class="command">/me saves bodycam, uploads it to the FIB Cloud and continues recording <button class="copy">Copy</button></div>
+    <div class="command">/do It is recording <button class="copy">Copy</button></div>
+
+    <!-- Footer -->
+    <div class="footer">
+      ❤️ Made By Kaizen (En3)
+    </div>
   </div>
 
   <script>
-    // Copy to clipboard
-    document.querySelectorAll('.copy-btn').forEach(btn => {
+    // Copy button functionality
+    document.querySelectorAll('.copy').forEach(btn => {
       btn.addEventListener('click', () => {
-        const text = btn.previousElementSibling.textContent;
+        const text = btn.parentElement.textContent.replace("Copy", "").trim();
         navigator.clipboard.writeText(text);
-        btn.textContent = 'Copied!';
-        setTimeout(() => btn.textContent = 'Copy', 1200);
+        btn.textContent = "Copied!";
+        setTimeout(() => btn.textContent = "Copy", 1200);
       });
     });
 
-    // Subtle particles
+    // Search filter
+    const searchInput = document.getElementById("searchInput");
+    searchInput.addEventListener("keyup", () => {
+      let filter = searchInput.value.toLowerCase();
+      document.querySelectorAll(".command, h2").forEach(el => {
+        if (el.textContent.toLowerCase().includes(filter)) {
+          el.style.display = "";
+        } else {
+          el.style.display = "none";
+        }
+      });
+    });
+
+    // Particle background
     const canvas = document.getElementById('particles');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    const particlesArray = [];
-    const numParticles = 60;
-
-    class Particle {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2 + 1;
-        this.speedX = (Math.random() - 0.5) * 0.5;
-        this.speedY = (Math.random() - 0.5) * 0.5;
-      }
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-      }
-      draw() {
-        ctx.fillStyle = 'rgba(255,255,255,0.5)';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
-
-    function init() {
-      for (let i = 0; i < numParticles; i++) {
-        particlesArray.push(new Particle());
-      }
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particlesArray.forEach(p => {
-        p.update();
-        p.draw();
+    let particles = [];
+    for (let i = 0; i < 80; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 2 + 1,
+        dx: (Math.random() - 0.5) * 0.6,
+        dy: (Math.random() - 0.5) * 0.6
       });
-      requestAnimationFrame(animate);
     }
 
-    init();
-    animate();
-
-    window.addEventListener('resize', () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    });
+    function drawParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "rgba(255,255,255,0.3)";
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+        p.x += p.dx;
+        p.y += p.dy;
+        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+      });
+      requestAnimationFrame(drawParticles);
+    }
+    drawParticles();
   </script>
 </body>
 </html>
