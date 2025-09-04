@@ -1,186 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Organization Portal</title>
-  <style>
-    /* ==== Reset ==== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Choose Your Organization</title>
 
-    body {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: radial-gradient(circle at top left, #0d0d0f, #1a1c20);
-      overflow: hidden;
-      color: #fff;
-    }
+<!-- Fonts close to the screenshot look -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800;900&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 
-    /* ==== Background Particles ==== */
-    .particles {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      overflow: hidden;
-    }
-    .particle {
-      position: absolute;
-      background: rgba(255,255,255,0.1);
-      border-radius: 50%;
-      animation: float 20s infinite;
-    }
-    @keyframes float {
-      from { transform: translateY(100vh) scale(0.3); opacity: 0; }
-      50%  { opacity: 1; }
-      to   { transform: translateY(-10vh) scale(1); opacity: 0; }
-    }
+<style>
+  :root{
+    --bg1:#2b1e63;   /* deep purple left */
+    --bg2:#1a1450;   /* deep purple right */
+    --heroTop:#f6c73c; /* gold hero top */
+    --heroBottom:#6d4ccf; /* gold->violet fade */
+    --cardBase:#e7e9f1;  /* light card */
+    --cardEdge:#cfd3e2;
+    --yellow:#ffd22e;
+    --ribbon:#e5534b;
+    --ink:#0b0b14;
+    --muted:#aab0c8;
+  }
 
-    /* ==== Container ==== */
-    .container {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      width: 90%;
-      max-width: 1100px;
-    }
+  /* Reset / base */
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    color:#fff;
+    font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background: linear-gradient(120deg,var(--bg1),var(--bg2)) fixed;
+    overflow-x:hidden;
+  }
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 2rem;
-      font-weight: 600;
-      background: linear-gradient(90deg, #00ffe0, #0099ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+  /* Subtle angled bands like the screenshot */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background:
+      repeating-linear-gradient(  -12deg,
+        rgba(0,0,0,.12) 0, rgba(0,0,0,.12) 140px,
+        rgba(0,0,0,0) 140px, rgba(0,0,0,0) 300px
+      );
+    pointer-events:none;
+    mix-blend-mode:normal;
+  }
 
-    /* ==== Org Cards ==== */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 2rem;
-    }
+  .wrap{
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 28px 18px 24px;
+  }
 
-    .card {
-      position: relative;
-      backdrop-filter: blur(12px);
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 20px;
-      padding: 2rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      overflow: hidden;
-    }
-    .card:hover {
-      transform: translateY(-10px) scale(1.03);
-      box-shadow: 0 8px 25px rgba(0, 255, 200, 0.15);
-    }
-    .card h2 {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-    }
-    .card p {
-      font-size: 0.9rem;
-      opacity: 0.7;
-    }
+  /* HERO (gold panel + crown + step) */
+  .hero{
+    width: min(880px, 92vw);
+    height: 150px;
+    margin: 18px auto 6px;
+    border-radius: 6px;
+    background: linear-gradient(180deg,var(--heroTop),var(--heroBottom));
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  }
 
-    /* ==== Cursor ==== */
-    .cursor {
-      width: 15px;
-      height: 15px;
-      border: 2px solid #00ffe0;
-      border-radius: 50%;
-      position: fixed;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-      transition: transform 0.1s ease, background 0.3s ease;
-      z-index: 1000;
-    }
-    .cursor.hover {
-      transform: translate(-50%, -50%) scale(2);
-      background: rgba(0,255,224,0.2);
-    }
-  </style>
-</head>
-<body>
-  <!-- Background Particles -->
-  <div class="particles"></div>
+  /* crown (clean SVG, not a brand mark) */
+  .crown{
+    width:72px; height:72px;
+    filter: drop-shadow(0 6px 10px rgba(0,0,0,.25));
+  }
 
-  <div class="container">
-    <h1>Choose Your Organization</h1>
-    <div class="grid">
-      <div class="card" onclick="redirect('fib.html')">
-        <h2>FIB</h2>
-        <p>Federal Investigation Bureau</p>
-      </div>
-      <div class="card" onclick="redirect('lspd.html')">
-        <h2>LSPD</h2>
-        <p>Los Santos Police Department</p>
-      </div>
-      <div class="card" onclick="redirect('sahp.html')">
-        <h2>SAHP</h2>
-        <p>San Andreas Highway Patrol</p>
-      </div>
-      <div class="card" onclick="redirect('sang.html')">
-        <h2>SANG</h2>
-        <p>San Andreas National Guard</p>
-      </div>
-      <div class="card" onclick="redirect('gov.html')">
-        <h2>GOV</h2>
-        <p>Government of San Andreas</p>
-      </div>
-    </div>
-  </div>
+  /* “BUY GRAND COINS” ghost text under crown */
+  .heroLabel{
+    position:absolute; left:0; right:0; top: 98px;
+    text-align:center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight:800;
+    font-size:.95rem;
+    letter-spacing:.12em;
+    color: rgba(255,255,255,.35);
+    user-select:none;
+  }
 
-  <div class="cursor"></div>
+  /* Step dots row */
+  .steps{
+    display:flex; align-items:center; gap:10px;
+    justify-content:center;
+    margin: 14px 0 6px;
+  }
+  .steps .word{
+    font-weight:800; letter-spacing:.18em;
+    font-family:'Montserrat', sans-serif;
+    color:#c9c6df; font-size:.82rem;
+    opacity:.9;
+  }
+  .dot{
+    width:12px; height:12px; border-radius:50%;
+    background: rgba(255,255,255,.25);
+  }
+  .dot.active{
+    background:#ffffff;
+  }
 
-  <script>
-    /* ==== Redirect ==== */
-    function redirect(page) {
-      document.body.style.opacity = "0";
-      setTimeout(() => {
-        window.location.href = page;
-      }, 400);
-    }
+  /* Main title + ribbon */
+  .title{
+    text-align:center;
+    margin: 10px 0 6px;
+    font-family:'Montserrat', sans-serif;
+    font-weight:900;
+    font-size: clamp(28px, 5.6vw, 48px);
+    letter-spacing:.05em;
+    color: var(--yellow);
+    text-shadow: 0 3px 0 rgba(0,0,0,.25);
+  }
+  .ribbon{
+    display:inline-block;
+    background: var(--ribbon);
+    color:#fff;
+    font-weight:800;
+    font-family:'Montserrat', sans-serif;
+    letter-spacing:.08em;
+    border-radius:8px;
+    padding:6px 14px 7px;
+    margin: 8px auto 18px;
+    box-shadow: 0 8px 18px rgba(229,83,75,.5);
+    font-size:.88rem;
+  }
 
-    /* ==== Particles ==== */
-    const particleContainer = document.querySelector('.particles');
-    for (let i = 0; i < 25; i++) {
-      const particle = document.createElement('div');
-      const size = Math.random() * 6 + 2;
-      particle.classList.add('particle');
-      particle.style.width = `${size}px`;
-      particle.style.height = `${size}px`;
-      particle.style.left = `${Math.random() * 100}vw`;
-      particle.style.animationDuration = `${10 + Math.random() * 15}s`;
-      particleContainer.appendChild(particle);
-    }
+  /* Grid of choice cards */
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:18px;
+    width:min(920px, 94vw);
+    margin: 10px auto 18px;
+  }
+  @media (max-width:930px){
+    .grid{ grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width:560px){
+    .grid{ grid-template-columns: 1fr; }
+  }
 
-    /* ==== Cursor ==== */
-    const cursor = document.querySelector('.cursor');
-    document.addEventListener('mousemove', e => {
-      cursor.style.left = e.pageX + "px";
-      cursor.style.top = e.pageY + "px";
-    });
-    document.querySelectorAll('.card').forEach(card => {
-      card.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-      card.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-    });
+  .card{
+    display:block;
+    text-decoration:none;
+    color: var(--ink);
+    background: linear-gradient(180deg, var(--cardBase), var(--cardEdge));
+    border-radius: 16px;
+    padding: 18px 18px 22px;
+    min-height: 110px;
+    position:relative;
+    box-shadow:
+      0 10px 20px rgba(0,0,0,.25),
+      inset 0 1px 0 rgba(255,255,255,.65);
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .card:hover{
+    transform: translateY(-3px);
+    box-shadow:
+      0 14px 28px rgba(0,0,0,.32),
+      inset 0 1px 0 rgba(255,255,255,.7);
+  }
 
-    /* Page fade-in */
-    document.body.style.opacity = "0";
-    window.onload = () => {
-      document.body.style.transition = "opacity 0.8s ease";
-      document.body.style.opacity = "1";
-    };
-  </script>
-</body>
-</html>
+  /* faint diagonal shine like the screenshot */
+  .card::before{
+    content:"";
+    position:absolute; inset:0;
+    background: linear-gradient(155deg, rgba(255,255,255,.13), transparent 40%);
+    border-radius:16px;
+    pointer-events:none;
+  }
+
+  /* small multi-color footer strip under each card (like the fade on bottom) */
+  .card::after{
+    content:"";
+    position:absolute; left:12px; right:12px; bottom:10px;
+    height:10px; border-radius: 6px;
+    background: linear-gradient(90deg, #9a6aff, #ffb84d);
+    opacity:.6;
+    filter: saturate(115%);
+  }
+
+  .label{
+    font-weight:800;
+    font-family:'Montserrat', sans-serif;
+    letter-spacing:.04em;
+    font-size: 1.05rem;
+    color:#1a1a28;
+  }
+  .sub{
+    margin-top:6px;
+    font-size:.85rem;
+    color:#3c415a;
+    font-weight:600;
+    letter-spacing:.02em;
+  }
+
+  /* Consent block (bottom) */
+  .consentWrap{
+    width:min(980px, 94vw);
+    margin: 12px auto 20px;
+    color:#eaeaf4;
+  }
+  .consent{
+    display:flex; align-items:flex-start; gap:12px;
+    background: rgba(0,0,0,.22);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 12px;
+    padding: 16px 14px;
+    line-height:1.35;
+    font-size:.9rem;
+  }
+  .checkbox{
+    --size:22px;
+    width:var(--size); height:var(--size);
+    min-width:var(--size);
+    border-radius:8px;
+    background:#7c65ff;
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,.65);
