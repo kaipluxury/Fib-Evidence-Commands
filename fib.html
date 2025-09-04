@@ -10,8 +10,8 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: radial-gradient(circle at top, #0d0d18, #000000);
-      color: #e6e6e6;
+      background: linear-gradient(180deg, #fff9e6, #ffffff);
+      color: #222;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -19,7 +19,7 @@
       overflow-x: hidden;
     }
 
-    /* Subtle animated particles */
+    /* Floating subtle particles */
     #particles {
       position: fixed;
       width: 100%;
@@ -29,10 +29,10 @@
     }
     .particle {
       position: absolute;
-      background: rgba(255, 215, 0, 0.1);
+      background: rgba(255, 215, 0, 0.25);
       border-radius: 50%;
-      width: 4px;
-      height: 4px;
+      width: 6px;
+      height: 6px;
       animation: float 12s linear infinite;
     }
     @keyframes float {
@@ -46,45 +46,46 @@
       position: relative;
       z-index: 1;
       margin-top: 40px;
-      width: 85%;
+      width: 90%;
       max-width: 950px;
       padding: 30px;
       border-radius: 20px;
-      background: rgba(15, 15, 25, 0.65);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 215, 0, 0.1);
-      box-shadow: 0 0 25px rgba(0, 150, 255, 0.2);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.25);
     }
 
     h1 {
-      font-size: 2.2rem;
+      font-size: 2.4rem;
       text-align: center;
       margin-bottom: 10px;
       letter-spacing: 2px;
-      color: #ffd700; /* golden like logo */
-      text-shadow: 0 0 10px rgba(0, 150, 255, 0.4);
+      color: #000;
+      text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
     }
 
     .logo {
       display: block;
       margin: 0 auto 15px auto;
-      width: 90px;
+      width: 110px;
       height: auto;
     }
 
     .divider {
       width: 120px;
-      height: 2px;
+      height: 3px;
       margin: 0 auto 25px auto;
       background: linear-gradient(90deg, transparent, #ffd700, transparent);
     }
 
     h2 {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       margin: 25px 0 10px;
-      color: #0096ff; /* deep blue accent */
-      border-left: 3px solid #ffd700;
+      color: #000;
+      border-left: 4px solid #ffd700;
       padding-left: 10px;
+      font-weight: 600;
     }
 
     .command {
@@ -92,59 +93,66 @@
       justify-content: space-between;
       align-items: center;
       margin: 6px 0;
-      padding: 10px 14px;
+      padding: 12px 16px;
       border-radius: 12px;
-      background: rgba(255, 255, 255, 0.05);
-      transition: background 0.3s ease;
+      background: #fffbe9;
+      border: 1px solid rgba(255, 215, 0, 0.35);
+      transition: background 0.3s ease, transform 0.2s ease;
       font-size: 0.95rem;
       font-family: "Consolas", monospace;
-      color: #e6e6e6;
+      color: #333;
     }
 
     .command:hover {
-      background: rgba(0, 150, 255, 0.12);
+      background: #fff4cc;
+      transform: translateY(-2px);
     }
 
     .italic {
       font-style: italic;
-      color: #ccc;
+      color: #666;
       font-size: 0.9rem;
+      margin-top: 4px;
     }
 
     button.copy {
-      background: rgba(0, 150, 255, 0.1);
-      border: 1px solid rgba(255, 215, 0, 0.5);
+      background: linear-gradient(135deg, #ffd700, #ffcc33);
+      border: none;
       border-radius: 8px;
-      padding: 5px 12px;
-      color: #ffd700;
+      padding: 6px 14px;
+      color: #000;
       cursor: pointer;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
+      font-weight: 600;
       transition: all 0.25s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     }
 
     button.copy:hover {
-      background: rgba(255, 215, 0, 0.2);
-      box-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+      background: linear-gradient(135deg, #ffdf33, #ffd700);
+      box-shadow: 0 4px 12px rgba(255, 215, 0, 0.5);
+      transform: translateY(-1px);
     }
 
     footer {
       text-align: center;
       margin: 35px 0 10px;
-      font-size: 0.85rem;
-      color: #999;
+      font-size: 0.9rem;
+      color: #444;
     }
 
     footer span {
-      color: #ffd700;
+      color: #000;
+      font-weight: 600;
     }
 
-    /* Elegant cursor effect */
+    /* Cursor effect */
     .cursor {
       position: fixed;
       top: 0; left: 0;
       width: 22px; height: 22px;
       margin-left: -11px; margin-top: -11px;
-      border: 2px solid rgba(0, 150, 255, 0.6);
+      border: 2px solid rgba(255, 215, 0, 0.6);
       border-radius: 50%;
       pointer-events: none;
       transition: transform 0.15s ease-out, opacity 0.3s ease;
@@ -162,7 +170,7 @@
 
   <!-- Main Content -->
   <div class="container">
-    <img src="https://raw.githubusercontent.com/kaipluxury/Fib-Evidence-Commands/refs/heads/main/1756827759967.png" alt="FIB Logo" class="logo">
+    <img src="https://raw.githubusercontent.com/kaipluxury/Fib-Evidence-Commands/refs/heads/main/grandlogo.webp" alt="FIB Logo" class="logo">
     <h1>FIB EVIDENCE PORTAL</h1>
     <div class="divider"></div>
 
@@ -207,7 +215,8 @@
     <div class="command">/do It is recording <button class="copy">Copy</button></div>
 
     <!-- Footer -->
-    <footer>❤️ Made By <span>Kaizen (En3)</span></footer>
+    <footer>📜 This is a professional Grand RP state orgs RP command hub, created to assist your RP experience.  
+      For improvements contact <span>@z6sp</span> on Discord. ❤️ Made By <span>Kaizen (En3)</span></footer>
   </div>
 
   <script>
