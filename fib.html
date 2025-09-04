@@ -5,24 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FIB Evidence Portal</title>
   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #FFD700, #FFC300); /* vibrant golden gradient */
+      background: linear-gradient(135deg, #FFD84D, #FFC300); /* vibrant gold gradient */
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 20px;
       min-height: 100vh;
+      color: #fff;
+      animation: fadeIn 1.2s ease-in-out;
     }
 
-    /* Logo Box */
-    .logo-box {
-      background: #fff;
-      padding: 20px;
-      border-radius: 18px;
-      margin-bottom: 20px;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
+
+    .logo-box {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 20px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(6px);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
     .logo {
       display: block;
       margin: 0 auto;
@@ -33,29 +48,33 @@
     h1 {
       font-size: 2rem;
       text-align: center;
-      margin: 10px 0 20px;
-      color: #0a2342; /* navy */
+      margin: 10px 0 25px;
+      color: #fff;
       font-weight: 700;
     }
 
-    /* Section Card */
     .section-card {
-      background: #fff;
-      color: #111;
-      padding: 20px;
+      background: #1e1e1e;
+      color: #fff;
+      padding: 18px 20px;
       border-radius: 18px;
       margin-bottom: 20px;
       width: 100%;
       max-width: 750px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+      transition: transform 0.3s ease;
+    }
+
+    .section-card:hover {
+      transform: translateY(-3px);
     }
 
     .section-card h2 {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       margin-bottom: 15px;
-      font-weight: 700;
-      color: #0a2342;
-      border-left: 5px solid #FFD700;
+      font-weight: 600;
+      color: #FFD700;
+      border-left: 4px solid #FFD700;
       padding-left: 10px;
     }
 
@@ -64,33 +83,41 @@
       justify-content: space-between;
       align-items: center;
       padding: 12px 14px;
-      border-radius: 10px;
-      background: #f9f9f9;
-      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 12px;
+      background: #2a2a2a;
       margin: 6px 0;
       font-size: 0.95rem;
       font-family: "Consolas", monospace;
+      color: #fff;
+      transition: background 0.3s ease;
+    }
+
+    .command:hover {
+      background: #333;
     }
 
     button.copy {
-      background: #0a2342;
+      background: linear-gradient(135deg, #FFD700, #FFC300);
       border: none;
       border-radius: 8px;
       padding: 6px 14px;
-      color: #fff;
+      color: #111;
       cursor: pointer;
       font-size: 0.8rem;
       font-weight: 600;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
       transition: all 0.25s ease;
     }
 
     button.copy:hover {
-      background: #19335c;
+      background: linear-gradient(135deg, #FFE066, #FFD84D);
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.9);
+      transform: scale(1.05);
     }
 
     .italic {
       font-style: italic;
-      color: #333;
+      color: #ccc;
       font-size: 0.9rem;
       margin-top: 8px;
     }
@@ -99,16 +126,16 @@
       text-align: center;
       margin: 35px 0 15px;
       font-size: 0.85rem;
-      color: #0a2342;
-      font-weight: 500;
+      color: #fff;
     }
+
     footer span {
       font-weight: 700;
+      color: #FFD700;
     }
   </style>
 </head>
 <body>
-  <!-- Logo -->
   <div class="logo-box">
     <img src="https://raw.githubusercontent.com/kaipluxury/Fib-Evidence-Commands/refs/heads/main/1756827759967.png" alt="FIB Logo" class="logo">
   </div>
@@ -128,7 +155,7 @@
 
     <!-- Attaching Bodycam Undercover -->
     <div class="section-card">
-      <h2>Attaching Bodycam (UnderCover)</h2>
+      <h2>Attaching Bodycam (Undercover)</h2>
       <div class="command">/me takes out bodycam and attaches it to belt, hides it, checks its ballistic and water proof <button class="copy">Copy</button></div>
       <div class="command">/me makes sure it is recording and checks for the red light <button class="copy">Copy</button></div>
       <div class="command">/do It is recording, is ballistic and water proof <button class="copy">Copy</button></div>
@@ -143,12 +170,13 @@
       <div class="command">/do It is recording <button class="copy">Copy</button></div>
     </div>
 
-    <!-- Drone Commands -->
+    <!-- Drone Commands Work Uniform -->
     <div class="section-card">
       <h2>Drone Commands (While in Work Uniform)</h2>
       <div class="command">/me launches the FIB Drone <button class="copy">Copy</button></div>
     </div>
 
+    <!-- Drone Commands Undercover -->
     <div class="section-card">
       <h2>Drone Commands (While Undercover)</h2>
       <div class="command">/me takes the FIB drone from the trunk and puts it in the backpack <button class="copy">Copy</button></div>
@@ -171,20 +199,18 @@
       <div class="command">/do It is recording <button class="copy">Copy</button></div>
     </div>
 
-    <!-- Footer -->
     <footer>❤️ Made By <span>Kaizen (En3)</span></footer>
   </div>
 
   <script>
-    // Copy buttons
     document.querySelectorAll(".copy").forEach(btn => {
       btn.addEventListener("click", () => {
         const text = btn.parentElement.innerText.replace("Copy", "").trim();
         navigator.clipboard.writeText(text);
-        btn.innerText = "Copied!";
+        btn.innerText = "✅ Copied";
         setTimeout(() => btn.innerText = "Copy", 1500);
       });
     });
   </script>
 </body>
-  </html>
+</html>
