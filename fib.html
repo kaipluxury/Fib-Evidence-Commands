@@ -10,7 +10,7 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: radial-gradient(circle at top, #0a0a0f, #000000);
+      background: radial-gradient(circle at top, #0d0d18, #000000);
       color: #e6e6e6;
       min-height: 100vh;
       display: flex;
@@ -29,7 +29,7 @@
     }
     .particle {
       position: absolute;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 215, 0, 0.1);
       border-radius: 50%;
       width: 4px;
       height: 4px;
@@ -50,10 +50,10 @@
       max-width: 950px;
       padding: 30px;
       border-radius: 20px;
-      background: rgba(20, 20, 20, 0.55);
+      background: rgba(15, 15, 25, 0.65);
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      box-shadow: 0 0 25px rgba(0, 200, 255, 0.05);
+      border: 1px solid rgba(255, 215, 0, 0.1);
+      box-shadow: 0 0 25px rgba(0, 150, 255, 0.2);
     }
 
     h1 {
@@ -61,29 +61,29 @@
       text-align: center;
       margin-bottom: 10px;
       letter-spacing: 2px;
-      color: #ffffff;
-      text-shadow: 0 0 10px rgba(0, 200, 255, 0.2);
+      color: #ffd700; /* golden like logo */
+      text-shadow: 0 0 10px rgba(0, 150, 255, 0.4);
     }
 
     .logo {
       display: block;
       margin: 0 auto 15px auto;
-      width: 80px;
+      width: 90px;
       height: auto;
     }
 
     .divider {
-      width: 100px;
+      width: 120px;
       height: 2px;
       margin: 0 auto 25px auto;
-      background: linear-gradient(90deg, transparent, #00c8ff, transparent);
+      background: linear-gradient(90deg, transparent, #ffd700, transparent);
     }
 
     h2 {
       font-size: 1.3rem;
       margin: 25px 0 10px;
-      color: #00c8ff;
-      border-left: 3px solid #00c8ff;
+      color: #0096ff; /* deep blue accent */
+      border-left: 3px solid #ffd700;
       padding-left: 10px;
     }
 
@@ -94,47 +94,48 @@
       margin: 6px 0;
       padding: 10px 14px;
       border-radius: 12px;
-      background: rgba(255, 255, 255, 0.04);
+      background: rgba(255, 255, 255, 0.05);
       transition: background 0.3s ease;
       font-size: 0.95rem;
       font-family: "Consolas", monospace;
+      color: #e6e6e6;
     }
 
     .command:hover {
-      background: rgba(0, 200, 255, 0.08);
+      background: rgba(0, 150, 255, 0.12);
     }
 
     .italic {
       font-style: italic;
-      color: #aaa;
+      color: #ccc;
       font-size: 0.9rem;
     }
 
     button.copy {
-      background: rgba(0, 200, 255, 0.08);
-      border: 1px solid rgba(0, 200, 255, 0.3);
+      background: rgba(0, 150, 255, 0.1);
+      border: 1px solid rgba(255, 215, 0, 0.5);
       border-radius: 8px;
       padding: 5px 12px;
-      color: #00c8ff;
+      color: #ffd700;
       cursor: pointer;
       font-size: 0.8rem;
       transition: all 0.25s ease;
     }
 
     button.copy:hover {
-      background: rgba(0, 200, 255, 0.15);
-      box-shadow: 0 0 8px rgba(0, 200, 255, 0.4);
+      background: rgba(255, 215, 0, 0.2);
+      box-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
     }
 
     footer {
       text-align: center;
       margin: 35px 0 10px;
       font-size: 0.85rem;
-      color: #888;
+      color: #999;
     }
 
     footer span {
-      color: #00c8ff;
+      color: #ffd700;
     }
 
     /* Elegant cursor effect */
@@ -143,7 +144,7 @@
       top: 0; left: 0;
       width: 22px; height: 22px;
       margin-left: -11px; margin-top: -11px;
-      border: 2px solid rgba(0, 200, 255, 0.6);
+      border: 2px solid rgba(0, 150, 255, 0.6);
       border-radius: 50%;
       pointer-events: none;
       transition: transform 0.15s ease-out, opacity 0.3s ease;
