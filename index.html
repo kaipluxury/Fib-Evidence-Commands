@@ -1,176 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Choose Your Organization</title>
+  <title>Organization Portal</title>
   <style>
+    /* ==== Reset ==== */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      font-family: "Poppins", sans-serif;
     }
 
     body {
-      background: linear-gradient(160deg, #2b166d, #0d081a);
-      color: white;
-      min-height: 100vh;
+      height: 100vh;
       display: flex;
-      align-items: center;
       justify-content: center;
-      text-align: center;
-      overflow-x: hidden;
+      align-items: center;
+      background: radial-gradient(circle at top left, #0d0d0f, #1a1c20);
+      overflow: hidden;
+      color: #fff;
     }
 
-    .container {
+    /* ==== Background Particles ==== */
+    .particles {
+      position: absolute;
       width: 100%;
-      max-width: 1000px;
-      padding: 20px;
-      animation: fadeIn 1.2s ease-in-out;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .particle {
+      position: absolute;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      animation: float 20s infinite;
+    }
+    @keyframes float {
+      from { transform: translateY(100vh) scale(0.3); opacity: 0; }
+      50%  { opacity: 1; }
+      to   { transform: translateY(-10vh) scale(1); opacity: 0; }
     }
 
-    /* Crown Logo */
-    .logo {
-      font-size: 64px;
-      margin-bottom: 15px;
-      animation: float 3s ease-in-out infinite;
+    /* ==== Container ==== */
+    .container {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      width: 90%;
+      max-width: 1100px;
     }
 
-    /* Step indicator */
-    .step {
-      font-size: 14px;
-      color: #aaa;
-      margin-bottom: 10px;
-      letter-spacing: 2px;
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 2rem;
+      font-weight: 600;
+      background: linear-gradient(90deg, #00ffe0, #0099ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    /* Title */
-    .title {
-      font-size: 32px;
-      font-weight: bold;
-      color: #ffd400;
-      margin-bottom: 10px;
-      text-shadow: 0 0 10px rgba(255, 212, 0, 0.5);
-    }
-
-    /* Banner */
-    .active-banner {
-      background: #e63946;
-      display: inline-block;
-      padding: 6px 15px;
-      font-weight: bold;
-      border-radius: 6px;
-      margin-bottom: 35px;
-      font-size: 14px;
-      box-shadow: 0 4px 15px rgba(230,57,70,0.5);
-      animation: pulse 2s infinite;
-    }
-
-    /* Grid of Cards */
+    /* ==== Org Cards ==== */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 14px;
-      padding: 40px 15px;
-      font-size: 18px;
-      font-weight: bold;
-      color: white;
-      cursor: pointer;
-      transition: all 0.35s ease;
-      backdrop-filter: blur(8px);
       position: relative;
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
       overflow: hidden;
     }
-
-    .card::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle at center, rgba(255,255,255,0.15), transparent 70%);
-      transform: rotate(25deg);
-      transition: opacity 0.4s;
-      opacity: 0;
-    }
-
-    .card:hover::before {
-      opacity: 1;
-    }
-
     .card:hover {
-      transform: translateY(-6px) scale(1.03);
-      background: rgba(255, 255, 255, 0.15);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 8px 25px rgba(0, 255, 200, 0.15);
     }
-
-    /* Consent Section */
-    .consent {
-      font-size: 12px;
-      color: #ccc;
-      margin-top: 35px;
-      text-align: left;
+    .card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
     }
-
-    .consent input {
-      margin-right: 8px;
-      accent-color: #ffd400;
-    }
-
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.05); opacity: 0.8; }
-    }
-
-    footer {
-      margin-top: 40px;
-      font-size: 0.85rem;
+    .card p {
+      font-size: 0.9rem;
       opacity: 0.7;
+    }
+
+    /* ==== Cursor ==== */
+    .cursor {
+      width: 15px;
+      height: 15px;
+      border: 2px solid #00ffe0;
+      border-radius: 50%;
+      position: fixed;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      transition: transform 0.1s ease, background 0.3s ease;
+      z-index: 1000;
+    }
+    .cursor.hover {
+      transform: translate(-50%, -50%) scale(2);
+      background: rgba(0,255,224,0.2);
     }
   </style>
 </head>
 <body>
+  <!-- Background Particles -->
+  <div class="particles"></div>
+
   <div class="container">
-    <div class="logo">👑</div>
-    <div class="step">STEP 1</div>
-    <div class="title">CHOOSE YOUR ORGANIZATION</div>
-    <div class="active-banner">X2 BONUS IS ACTIVE</div>
-
+    <h1>Choose Your Organization</h1>
     <div class="grid">
-      <a href="lspd.html" class="card">LSPD</a>
-      <a href="sahp.html" class="card">SAHP</a>
-      <a href="gov.html" class="card">GOV</a>
-      <a href="sang.html" class="card">SANG</a>
-      <a href="fib.html" class="card">FIB</a>
+      <div class="card" onclick="redirect('fib.html')">
+        <h2>FIB</h2>
+        <p>Federal Investigation Bureau</p>
+      </div>
+      <div class="card" onclick="redirect('lspd.html')">
+        <h2>LSPD</h2>
+        <p>Los Santos Police Department</p>
+      </div>
+      <div class="card" onclick="redirect('sahp.html')">
+        <h2>SAHP</h2>
+        <p>San Andreas Highway Patrol</p>
+      </div>
+      <div class="card" onclick="redirect('sang.html')">
+        <h2>SANG</h2>
+        <p>San Andreas National Guard</p>
+      </div>
+      <div class="card" onclick="redirect('gov.html')">
+        <h2>GOV</h2>
+        <p>Government of San Andreas</p>
+      </div>
     </div>
-
-    <div class="consent">
-      <label>
-        <input type="checkbox">
-        I CONSENT TO ACCESSING ORGANIZATION COMMANDS AND ACKNOWLEDGE THIS IS FINAL AND CANNOT BE REVERSED.
-      </label>
-    </div>
-
-    <footer>❤️ Made By Kaizen (EN3)</footer>
   </div>
+
+  <div class="cursor"></div>
+
+  <script>
+    /* ==== Redirect ==== */
+    function redirect(page) {
+      document.body.style.opacity = "0";
+      setTimeout(() => {
+        window.location.href = page;
+      }, 400);
+    }
+
+    /* ==== Particles ==== */
+    const particleContainer = document.querySelector('.particles');
+    for (let i = 0; i < 25; i++) {
+      const particle = document.createElement('div');
+      const size = Math.random() * 6 + 2;
+      particle.classList.add('particle');
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      particle.style.left = `${Math.random() * 100}vw`;
+      particle.style.animationDuration = `${10 + Math.random() * 15}s`;
+      particleContainer.appendChild(particle);
+    }
+
+    /* ==== Cursor ==== */
+    const cursor = document.querySelector('.cursor');
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.pageX + "px";
+      cursor.style.top = e.pageY + "px";
+    });
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+      card.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
+
+    /* Page fade-in */
+    document.body.style.opacity = "0";
+    window.onload = () => {
+      document.body.style.transition = "opacity 0.8s ease";
+      document.body.style.opacity = "1";
+    };
+  </script>
 </body>
 </html>
