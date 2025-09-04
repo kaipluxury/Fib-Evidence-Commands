@@ -1,8 +1,168 @@
-<img src="https://raw.githubusercontent.com/kaipluxury/Fib-Evidence-Commands/refs/heads/main/sahp-logo-5.png" alt="SAHP Logo" class="logo">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LSPD Bodycam Commands</title>
 
-<h1>SAHP BODYCAM COMMANDS</h1>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- Attaching Bodycam (Uniform) -->
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0022FF, #2A65F5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      min-height: 100vh;
+      color: #fff;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .home-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: linear-gradient(135deg, #2A65F5, #0022FF);
+      color: #111;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+      transition: all 0.25s ease;
+      font-size: 0.9rem;
+    }
+
+    .home-btn:hover {
+      background: linear-gradient(135deg, #0022FF, #2A65F5);
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+    }
+
+    .logo {
+      display: block;
+      margin: 60px auto 20px auto;
+      width: 110px;
+      height: auto;
+      filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.25));
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      text-align: center;
+      margin: 10px 0 25px;
+      color: #1e1e1e;
+      font-weight: 700;
+    }
+
+    .section-card {
+      background: #1e1e1e;
+      color: #fff;
+      padding: 18px 20px;
+      border-radius: 18px;
+      margin-bottom: 20px;
+      width: 100%;
+      max-width: 750px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .section-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    .section-card h2 {
+      font-size: 1.15rem;
+      margin-bottom: 15px;
+      font-weight: 600;
+      color: #0C2DFA;
+      border-left: 4px solid #0C2DFA;
+      padding-left: 10px;
+    }
+
+    .command {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: #2a2a2a;
+      margin: 6px 0;
+      font-size: 0.95rem;
+      font-family: "Consolas", monospace;
+      color: #fff;
+      transition: background 0.3s ease;
+    }
+
+    .command:hover {
+      background: #333;
+    }
+
+    button.copy {
+      background: linear-gradient(135deg, #0022FF, #2A65F5);
+      border: none;
+      border-radius: 8px;
+      padding: 6px 14px;
+      color: #111;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: all 0.25s ease;
+    }
+
+    button.copy:hover {
+      background: linear-gradient(135deg, #0022FF, #2A65F5);
+      transform: scale(1.05);
+    }
+
+    .italic {
+      font-style: italic;
+      color: #ccc;
+      font-size: 0.9rem;
+      margin-top: 8px;
+    }
+
+    footer {
+      text-align: center;
+      margin: 35px 0 15px;
+      font-size: 0.85rem;
+      color: #fff;
+    }
+
+    footer span {
+      font-weight: 700;
+      color: #1e1e1e;
+    }
+  </style>
+</head>
+<body>
+  <!-- Home Button -->
+  <a href="index.html" class="home-btn">🏠 Home</a>
+
+  <!-- Logo -->
+  <img src="https://raw.githubusercontent.com/kaipluxury/Fib-Evidence-Commands/refs/heads/main/700b59726aeaa01fbcda2a861209cd70_1_orig.png" alt="LSPD Logo" class="logo">
+
+  <h1>LSPD BODYCAM COMMANDS</h1>
+
+  <div class="container">
+
+    <!-- Attaching Bodycam Uniform -->
 <div class="section-card">
   <h2>Attaching Bodycam (Uniform)</h2>
   <div class="command">/me Takes out bodycam, attaches it to chest, checks its ballistic, water proof <button class="copy">Copy</button></div>
