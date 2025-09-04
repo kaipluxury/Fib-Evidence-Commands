@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LSPD Bodycam Commands</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0022FF, #2A65F5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      min-height: 100vh;
+      color: #fff;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .home-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: linear-gradient(135deg, #2A65F5, #0022FF);
+      color: #111;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+      transition: all 0.25s ease;
+      font-size: 0.9rem;
+    }
+
+    .home-btn:hover {
+      background: linear-gradient(135deg, #0022FF, #2A65F5);
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+    }
+
+    .logo {
+      display: block;
+      margin: 60px auto 20px auto;
+      width: 110px;
+      height: auto;
+      filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.25));
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      text-align: center;
+      margin: 10px 0 25px;
+      color: #1e1e1e;
+      font-weight: 700;
+    }
+
+    .section-card {
+      background: #1e1e1e;
+      color: #fff;
+      padding: 18px 20px;
+      border-radius: 18px;
+      margin-bottom: 20px;
+      width: 100%;
+      max-width: 750px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .section-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    .section-card h2 {
+      font-size: 1.15rem;
+      margin-bottom: 15px;
+      font-weight: 600;
+      color: #FFD700;
+      border-left: 4px solid #FFD700;
+      padding-left: 10px;
+    }
+
+    .command {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: #2a2a2a;
+      margin: 6px 0;
+      font-size: 0.95rem;
+      font-family: "Consolas", monospace;
+      color: #fff;
+      transition: background 0.3s ease;
+    }
+
+    .command:hover {
+      background: #333;
+    }
+
+    button.copy {
+      background: linear-gradient(135deg, #0022FF, #2A65F5);
+      border: none;
+      border-radius: 8px;
+      padding: 6px 14px;
+      color: #111;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: all 0.25s ease;
+    }
+
+    button.copy:hover {
+      background: linear-gradient(135deg, #0022FF, #2A65F5);
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+      transform: scale(1.05);
+    }
+
+    .italic {
+      font-style: italic;
+      color: #ccc;
+      font-size: 0.9rem;
+      margin-top: 8px;
+    }
+
+    footer {
+      text-align: center;
+      margin: 35px 0 15px;
+      font-size: 0.85rem;
+      color: #fff;
+    }
+
+    footer span {
+      font-weight: 700;
+      color: #1e1e1e;
+    }
+  </style>
+</head>
+<body>
+  <!-- Home Button -->
+  <a href="index.html" class="home-btn">🏠 Home</a>
+
+  <!-- Logo -->
+  <img src="https://raw.githubusercontent.com/kaipluxury/Fib-Evidence-Commands/refs/heads/main/700b59726aeaa01fbcda2a861209cd70_1_orig.png" alt="LSPD Logo" class="logo">
+
+  <h1>LSPD BODYCAM COMMANDS</h1>
+
+  <div class="container">
+
+    <!-- Attaching Bodycam Uniform -->
+    <div class="section-card">
+      <h2>Attaching Bodycam (Uniform)</h2>
+      <div class="command">/me Takes out bodycam, attaches it to chest, checks its ballistic, water proof <button class="copy">Copy</button></div>
+      <div class="command">/me makes sure it is recording and checks for the red light <button class="copy">Copy</button></div>
+      <div class="command">/do It is recording, is ballistic and water proof <button class="copy">Copy</button></div>
+      <div class="command">/me connects PDA to the nearest cell tower <button class="copy">Copy</button></div>
+    </div>
+
+    <!-- Attaching Bodycam Undercover -->
+    <div class="section-card">
+      <h2>Attaching Bodycam (Undercover)</h2>
+      <div class="command">/me takes out bodycam and attaches it to belt, hides it, checks its ballistic and water proof <button class="copy">Copy</button></div>
+      <div class="command">/me makes sure it is recording and checks for the red light <button class="copy">Copy</button></div>
+      <div class="command">/do It is recording, is ballistic and water proof <button class="copy">Copy</button></div>
+      <div class="command">/me connects PDA to the nearest cell tower <button class="copy">Copy</button></div>
+      <div class="command">/me takes the LSPD drone from the trunk and puts it in the backpack <button class="copy">Copy</button></div>
+    </div>
+
+    <!-- Refreshing Bodycam -->
+    <div class="section-card">
+      <h2>Refreshing Bodycam</h2>
+      <div class="command">/me refreshing bodycam <button class="copy">Copy</button></div>
+      <div class="command">/do It is recording <button class="copy">Copy</button></div>
+      <p class="italic">*Turn on the bodycam or screen recorder, then type the command clearly on camera..*</p>
+    </div>
+
+    <!-- Saving Bodycam -->
+    <div class="section-card">
+      <h2>Saving Bodycam</h2>
+      <div class="command">/me saves bodycam, uploads it to the LSPD Cloud and continues recording <button class="copy">Copy</button></div>
+      <div class="command">/do It is recording <button class="copy">Copy</button></div>
+    </div>
+
+    <!-- Taking Jumpsuit -->
+    <div class="section-card">
+      <h2>Taking Jumpsuit from Bench</h2>
+      <div class="command">/me takes the XYZ size Jumpsuit from the Bench <button class="copy">Copy</button></div>
+      <div class="command">/me Places the Jumpsuit On the Bed <button class="copy">Copy</button></div>
+      <p class="italic">*Don’t forget to use the exact size 10-15 requested—replace XYZ with it.*</p>
+    </div>
+
+    <!-- Drone Commands Work Uniform -->
+    <div class="section-card">
+      <h2>Drone Commands (While in Work Uniform)</h2>
+      <div class="command">/me launches the LSPD Drone <button class="copy">Copy</button></div>
+    </div>
+
+    <!-- Drone Commands Undercover -->
+    <div class="section-card">
+      <h2>Drone Commands (While Undercover)</h2>
+      <div class="command">/me takes the LSPD drone from the trunk and puts it in the backpack <button class="copy">Copy</button></div>
+      <div class="command">/me takes the LSPD drone from the backpack and launches it <button class="copy">Copy</button></div>
+      <div class="command">/me takes the LSPD drone from the ground and puts it in the backpack <button class="copy">Copy</button></div>
+    </div>
+
+    <!-- Handing Footage to Lawyer -->
+    <div class="section-card">
+      <h2>Handing Footage to the Lawyer</h2>
+      <div class="command">/me saves bodycam contents onto an SD card and uploads contents to LSPD servers <button class="copy">Copy</button></div>
+      <div class="command">/me Takes SD card out of the bodycam and hands it to the lawyer <button class="copy">Copy</button></div>
+    </div>
+
+    <!-- Finishing Shift -->
+    <div class="section-card">
+      <h2>Finishing Your Shift</h2>
+      <div class="command">/me saves bodycam contents onto an SD card and uploads contents to LSPD servers <button class="copy">Copy</button></div>
+      <div class="command">/me puts the badge in the locker <button class="copy">Copy</button></div>
+    </div>
+
+    <!-- Searching a Trunk -->
+    <div class="section-card">
+      <h2>Searching a Trunk</h2>
+      <div class="command">/me carefully inspects the trunk and uses a crowbar to attempt opening it <button class="copy">Copy</button></div>
+      <div class="command">/me applies pressure with the crowbar to force the trunk open <button class="copy">Copy</button></div>
+    </div>
+
+    <!-- Taking Evidence -->
+    <div class="section-card">
+      <h2>Taking Evidence</h2>
+      <div class="command">/me feels the edges of the vehicle for VIN and checks for ownership <button class="copy">Copy</button></div>
+      <div class="command">/me checks the VIN from the steering neck of the bike and checks for ownership <button class="copy">Copy</button></div>
+      <p class="italic">*Then press G on vehicle and view vehicle information.*</p>
+    </div>
+
+    <!-- Department Messages -->
+    <div class="section-card">
+      <h2>Department Messages</h2>
+      <h2>⚖️ DOJ Related </h2>
+      <div class="command">LSPD to DOJ: How copy? <button class="copy">Copy</button></div>
+      <div class="command">LSPD to DOJ: Good copy, send traffic! <button class="copy">Copy</button></div>
+      <div class="command">LSPD to DOJ: Bad copy! <button class="copy">Copy</button></div>
+      <div class="command">LSPD to DOJ: Bad copy, we're currently in a situation! <button class="copy">Copy</button></div>
+      <div class="command">LSPD to DOJ: We have a 10-15 at DOC requesting a lawyer, Are there any available? <button class="copy">Copy</button></div>
+      <div class="command">LSPD to DOJ: 10-4, much appreciated! <button class="copy">Copy</button></div>
+    </div>
+
+    <div class="section-card">
+      <h2>👮‍♀️ FIB Related  </h2>
+      <div class="command">LSPD to FIB: How copy? <button class="copy">Copy</button></div>
+      <div class="command">LSPD to FIB: Good copy, send traffic! <button class="copy">Copy</button></div>
+      <div class="command">LSPD to FIB: Bad copy! <button class="copy">Copy</button></div>
+      <div class="command">LSPD to FIB: Bad copy, we're currently in a situation! <button class="copy">Copy</button></div>
+      <div class="command">LSPD to FIB: Can we have a quick meeting at your HQ? <button class="copy">Copy</button></div>
+      <div class="command">LSPD to FIB: Requesting permission to land at your helipad. <button class="copy">Copy</button></div>
+      <div class="command">LSPD to FIB: We have one of your units in custody, could you 10-17 to DOC? <button class="copy">Copy</button></div>
+      <div class="command">LSPD to FIB: We're currently enroute! <button class="copy">Copy</button></div>
+      <div class="command">LSPD to FIB: 10-4, much appreciated! <button class="copy">Copy</button></div>
+      <div class="command">LSPD to FIB: Permission Granted! <button class="copy">Copy</button></div>
+    </div>
+ <div class="section-card">
+      <h2>🚓 SAHP Related</h2>
+      <div class="command">LSPD to SAHP: Good copy, send traffic! <button class="copy">Copy</button></div>
+      <div class="command">LSPD to SAHP: Bad copy! <button class="copy">Copy</button></div>
+      <div class="command">LSPD to SAHP: Bad copy, we're currently in a situation! <button class="copy">Copy</button></div>
+      <div class="command">LSPD to SAHP: Can we have a quick meeting at your hall? <button class="copy">Copy</button></div>
+      <div class="command">LSPD to SAHP: Requesting permission to land at your helipad. <button class="copy">Copy</button></div>
+      <div class="command">LSPD to SAHP: We have one of your agents in custody, could you 10-17 to DOC? <button class="copy">Copy</button></div>
+      <div class="command">LSPD to SAHP: We're currently enroute! <button class="copy">Copy</button></div>
+      <div class="command">LSPD to SAHP: Troopers enroute! <button class="copy">Copy</button></div>
+      <div class="command">LSPD to SAHP: 10-4, much appreciated! <button class="copy">Copy</button></div>
+      <div class="command">LSPD to SAHP: Permission Granted! <button class="copy">Copy</button></div>
+    </div>
+
+    <!-- NG Messages -->
+    <div class="section-card">
+      <h2>NG Related 👮‍♂️</h2>
+      <div class="command">LSPD to NG: How copy? <button class="copy">Copy</button></div>
+      <div class="command">LSPD to NG: Good copy, send traffic! <button class="copy">Copy</button></div>
+      <div class="command">LSPD to NG: Bad copy! <button class="copy">Copy</button></div>
+      <div class="command">LSPD to NG: Bad copy, we're currently in a situation! <button class="copy">Copy</button></div>
+      <div class="command">LSPD to NG: Can we have a quick meeting at your main barracks? <button class="copy">Copy</button></div>
+      <div class="command">LSPD to NG: Requesting permission to land at your main barracks. <button class="copy">Copy</button></div>
+      <div class="command">LSPD to NG: We have one of your soldiers in custody, could you 10-17 to DOC? <button class="copy">Copy</button></div>
+      <div class="command">LSPD to NG: We're currently enroute! <button class="copy">Copy</button></div>
+      <div class="command">LSPD to NG: 10-4, much appreciated! <button class="copy">Copy</button></div>
+      <div class="command">LSPD to NG: Permission Granted! <button class="copy">Copy</button></div>
+    </div>
+
+    <!-- EMS Messages -->
+    <div class="section-card">
+      <h2>👩‍⚕️ EMS Related </h2>
+      <div class="command">LSPD to EMS: How copy? <button class="copy">Copy</button></div>
+      <div class="command">LSPD to EMS: Good copy, send traffic! <button class="copy">Copy</button></div>
+      <div class="command">LSPD to EMS: Bad copy! <button class="copy">Copy</button></div>
+      <div class="command">LSPD to EMS: Bad copy, we're currently in a situation! <button class="copy">Copy</button></div>
+      <div class="command">LSPD to EMS: Ghetto is off limits for the next 25 minutes, please inform all your units. <button class="copy">Copy</button></div>
+      <div class="command">LSPD to EMS: Can we have a quick meeting at Pillbox Hospital? <button class="copy">Copy</button></div>
+      <div class="command">LSPD to EMS: Requesting permission to land at your helipad. <button class="copy">Copy</button></div>
+      <div class="command">LSPD to EMS: We have one of your employees in custody, could you 10-17 to DOC? <button class="copy">Copy</button></div>
+      <div class="command">LSPD to EMS: We're currently enroute! <button class="copy">Copy</button></div>
+      <div class="command">LSPD to EMS: Clean! <button class="copy">Copy</button></div>
+      <div class="command">LSPD to EMS: 10-4, much appreciated! <button class="copy">Copy</button></div>
+      <div class="command">LSPD to EMS: Permission Granted! <button class="copy">Copy</button></div>
+    </div>
+
+    <!-- Government Messages -->
+    <div class="section-card">
+      <h2>🏛️ LSPD to Government Related </h2>
+      <div class="command">LSPD to GOV: How copy? <button class="copy">Copy</button></div>
+      <div class="command">LSPD to GOV: Good copy, send traffic! <button class="copy">Copy</button></div>
+      <div class="command">LSPD to GOV: Bad copy! <button class="copy">Copy</button></div>
+      <div class="command">LSPD to GOV: Bad copy, we're currently in a situation! <button class="copy">Copy</button></div>
+      <div class="command">LSPD to GOV: Agents enroute! <button class="copy">Copy</button></div>
+      <div class="command">LSPD to GOV: Can we have a quick meeting at capital? <button class="copy">Copy</button></div>
+      <div class="command">LSPD to GOV: Requesting permission to land on your lawn. <button class="copy">Copy</button></div>
+      <div class="command">LSPD to GOV: We have one of your units in custody, could you 10-17 to DOC? <button class="copy">Copy</button></div>
+      <div class="command">LSPD to GOV: 10-4, much appreciated! <button class="copy">Copy</button></div>
+    </div>
+
+    <!-- Global Messages -->
+    <div class="section-card">
+      <h2>🚨 Global Related </h2>
+      <div class="command">LSPD to GLOBAL: What's the situation? <button class="copy">Copy</button></div>
+      <div class="command">LSPD to ALL: Global is for Regrouping for latest Store Robbery. Please Dispatch Max units <button class="copy">Copy</button></div>
+      <div class="command">LSPD to ALL: Global is for heavy 10-16s, send all available units! <button class="copy">Copy</button></div>
+      <div class="command">LSPD to ALL: Federals is getting robbed at global, send all available units! <button class="copy">Copy</button></div>
+      <div class="command">LSPD to ALL: Global is for a hood watch, send all available units! <button class="copy">Copy</button></div>
+      <div class="command">LSPD to ALL: Global is for a checkpoint, everyone is invited! <button class="copy">Copy</button></div>
+      <div class="command">LSPD to ALL: On standby for a possible hostage situation! <button class="copy">Copy</button></div>
+      <div class="command">LSPD to ALL: The Global is 10-99. <button class="copy">Copy</button></div>
+    </div>
+
+  </div>
+
+  <footer>❤️ Made By <span>Zenkai.(En3)</span></footer>
+
+  <script>
+    document.querySelectorAll(".copy").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const text = btn.parentElement.innerText.replace("Copy", "").trim();
+        navigator.clipboard.writeText(text);
+        btn.innerText = "Copied";
+        setTimeout(() => btn.innerText = "Copy", 1500);
+      });
+    });
+  </script>
+</body>
+</html>
