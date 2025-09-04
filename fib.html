@@ -3,174 +3,243 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Choose Your Organization</title>
+  <title>FIB Evidence Portal</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    }
+    /* Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      background: linear-gradient(160deg, #2b166d, #0d081a);
-      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: radial-gradient(circle at top, #0a0a0f, #000000);
+      color: #e6e6e6;
       min-height: 100vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      text-align: center;
       overflow-x: hidden;
     }
 
-    .container {
+    /* Subtle animated particles */
+    #particles {
+      position: fixed;
       width: 100%;
-      max-width: 1000px;
-      padding: 20px;
-      animation: fadeIn 1.2s ease-in-out;
-    }
-
-    /* Crown Logo */
-    .logo {
-      font-size: 64px;
-      margin-bottom: 15px;
-      animation: float 3s ease-in-out infinite;
-    }
-
-    /* Step indicator */
-    .step {
-      font-size: 14px;
-      color: #aaa;
-      margin-bottom: 10px;
-      letter-spacing: 2px;
-    }
-
-    /* Title */
-    .title {
-      font-size: 32px;
-      font-weight: bold;
-      color: #ffd400;
-      margin-bottom: 10px;
-      text-shadow: 0 0 10px rgba(255, 212, 0, 0.5);
-    }
-
-    /* Banner */
-    .active-banner {
-      background: #e63946;
-      display: inline-block;
-      padding: 6px 15px;
-      font-weight: bold;
-      border-radius: 6px;
-      margin-bottom: 35px;
-      font-size: 14px;
-      box-shadow: 0 4px 15px rgba(230,57,70,0.5);
-      animation: pulse 2s infinite;
-    }
-
-    /* Grid of Cards */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 25px;
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 14px;
-      padding: 40px 15px;
-      font-size: 18px;
-      font-weight: bold;
-      color: white;
-      cursor: pointer;
-      transition: all 0.35s ease;
-      backdrop-filter: blur(8px);
-      position: relative;
+      height: 100%;
+      z-index: 0;
       overflow: hidden;
     }
-
-    .card::before {
-      content: "";
+    .particle {
       position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle at center, rgba(255,255,255,0.15), transparent 70%);
-      transform: rotate(25deg);
-      transition: opacity 0.4s;
-      opacity: 0;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      width: 4px;
+      height: 4px;
+      animation: float 12s linear infinite;
     }
-
-    .card:hover::before {
-      opacity: 1;
-    }
-
-    .card:hover {
-      transform: translateY(-6px) scale(1.03);
-      background: rgba(255, 255, 255, 0.15);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-    }
-
-    /* Consent Section */
-    .consent {
-      font-size: 12px;
-      color: #ccc;
-      margin-top: 35px;
-      text-align: left;
-    }
-
-    .consent input {
-      margin-right: 8px;
-      accent-color: #ffd400;
-    }
-
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
+      from { transform: translateY(100vh); opacity: 0; }
+      50% { opacity: 1; }
+      to { transform: translateY(-10vh); opacity: 0; }
     }
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.05); opacity: 0.8; }
+    /* Glass container */
+    .container {
+      position: relative;
+      z-index: 1;
+      margin-top: 40px;
+      width: 85%;
+      max-width: 950px;
+      padding: 30px;
+      border-radius: 20px;
+      background: rgba(20, 20, 20, 0.55);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 0 25px rgba(0, 200, 255, 0.05);
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      text-align: center;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+      color: #ffffff;
+      text-shadow: 0 0 10px rgba(0, 200, 255, 0.2);
+    }
+
+    .logo {
+      display: block;
+      margin: 0 auto 15px auto;
+      width: 80px;
+      height: auto;
+    }
+
+    .divider {
+      width: 100px;
+      height: 2px;
+      margin: 0 auto 25px auto;
+      background: linear-gradient(90deg, transparent, #00c8ff, transparent);
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      margin: 25px 0 10px;
+      color: #00c8ff;
+      border-left: 3px solid #00c8ff;
+      padding-left: 10px;
+    }
+
+    .command {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 6px 0;
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.04);
+      transition: background 0.3s ease;
+      font-size: 0.95rem;
+      font-family: "Consolas", monospace;
+    }
+
+    .command:hover {
+      background: rgba(0, 200, 255, 0.08);
+    }
+
+    .italic {
+      font-style: italic;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    button.copy {
+      background: rgba(0, 200, 255, 0.08);
+      border: 1px solid rgba(0, 200, 255, 0.3);
+      border-radius: 8px;
+      padding: 5px 12px;
+      color: #00c8ff;
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: all 0.25s ease;
+    }
+
+    button.copy:hover {
+      background: rgba(0, 200, 255, 0.15);
+      box-shadow: 0 0 8px rgba(0, 200, 255, 0.4);
     }
 
     footer {
-      margin-top: 40px;
+      text-align: center;
+      margin: 35px 0 10px;
       font-size: 0.85rem;
-      opacity: 0.7;
+      color: #888;
     }
+
+    footer span {
+      color: #00c8ff;
+    }
+
+    /* Elegant cursor effect */
+    .cursor {
+      position: fixed;
+      top: 0; left: 0;
+      width: 22px; height: 22px;
+      margin-left: -11px; margin-top: -11px;
+      border: 2px solid rgba(0, 200, 255, 0.6);
+      border-radius: 50%;
+      pointer-events: none;
+      transition: transform 0.15s ease-out, opacity 0.3s ease;
+      z-index: 9999;
+    }
+    .cursor.click { transform: scale(0.7); opacity: 0.6; }
   </style>
 </head>
 <body>
+  <!-- Particles -->
+  <div id="particles"></div>
+
+  <!-- Cursor -->
+  <div class="cursor" id="cursor"></div>
+
+  <!-- Main Content -->
   <div class="container">
-    <div class="logo">👑</div>
-    <div class="step">STEP 1</div>
-    <div class="title">CHOOSE YOUR ORGANIZATION</div>
-    <div class="active-banner">X2 BONUS IS ACTIVE</div>
+    <img src="https://raw.githubusercontent.com/kaipluxury/Fib-Evidence-Commands/refs/heads/main/1756827759967.png" alt="FIB Logo" class="logo">
+    <h1>FIB EVIDENCE PORTAL</h1>
+    <div class="divider"></div>
 
-    <div class="grid">
-      <a href="lspd.html" class="card">LSPD</a>
-      <a href="sahp.html" class="card">SAHP</a>
-      <a href="gov.html" class="card">GOV</a>
-      <a href="sang.html" class="card">SANG</a>
-      <a href="fib.html" class="card">FIB</a>
-    </div>
+    <!-- Attaching Bodycam Uniform -->
+    <h2>Attaching Bodycam (Uniform)</h2>
+    <div class="command">/me Takes out bodycam, attaches it to chest, checks its ballistic, water proof <button class="copy">Copy</button></div>
+    <div class="command">/me makes sure it is recording and checks for the red light <button class="copy">Copy</button></div>
+    <div class="command">/do It is recording, is ballistic and water proof <button class="copy">Copy</button></div>
+    <div class="command">/me connects PDA to the nearest cell tower <button class="copy">Copy</button></div>
 
-    <div class="consent">
-      <label>
-        <input type="checkbox">
-        I CONSENT TO ACCESSING ORGANIZATION COMMANDS AND ACKNOWLEDGE THIS IS FINAL AND CANNOT BE REVERSED.
-      </label>
-    </div>
+    <!-- Attaching Bodycam Undercover -->
+    <h2>Attaching Bodycam (UnderCover)</h2>
+    <div class="command">/me takes out bodycam and attaches it to belt, hides it, checks its ballistic and water proof <button class="copy">Copy</button></div>
+    <div class="command">/me makes sure it is recording and checks for the red light <button class="copy">Copy</button></div>
+    <div class="command">/do It is recording, is ballistic and water proof <button class="copy">Copy</button></div>
+    <div class="command">/me connects PDA to the nearest cell tower <button class="copy">Copy</button></div>
+    <div class="command">/me takes the FIB drone from the trunk and puts it in the backpack <button class="copy">Copy</button></div>
 
-    <footer>❤️ Made By Kaizen (EN3)</footer>
+    <!-- Refreshing Bodycam -->
+    <h2>Refreshing Bodycam</h2>
+    <div class="command">/me refreshing bodycam <button class="copy">Copy</button></div>
+    <div class="command">/do It is recording <button class="copy">Copy</button></div>
+
+    <!-- Drone Commands -->
+    <h2>Drone Commands (While in Work Uniform)</h2>
+    <div class="command">/me launches the FIB Drone <button class="copy">Copy</button></div>
+
+    <h2>Drone Commands (While Undercover)</h2>
+    <div class="command">/me takes the FIB drone from the trunk and puts it in the backpack <button class="copy">Copy</button></div>
+    <div class="command">/me takes the FIB drone from the backpack and launches it <button class="copy">Copy</button></div>
+    <div class="command">/me takes the FIB drone from the ground and puts it in the backpack <button class="copy">Copy</button></div>
+
+    <!-- Taking Evidence -->
+    <h2>Taking Evidence</h2>
+    <div class="command">/me feels the edges of the vehicle for VIN and checks for ownership <button class="copy">Copy</button></div>
+    <div class="command">/me checks the VIN from the steering neck of the bike and checks for ownership <button class="copy">Copy</button></div>
+    <p class="italic">*Then press G on vehicle and view vehicle information.*</p>
+
+    <!-- Saving Bodycam -->
+    <h2>Saving Bodycam</h2>
+    <div class="command">/me saves bodycam, uploads it to the FIB Cloud and continues recording <button class="copy">Copy</button></div>
+    <div class="command">/do It is recording <button class="copy">Copy</button></div>
+
+    <!-- Footer -->
+    <footer>❤️ Made By <span>Kaizen (En3)</span></footer>
   </div>
+
+  <script>
+    // Particles
+    const particlesContainer = document.getElementById("particles");
+    for (let i = 0; i < 40; i++) {
+      const p = document.createElement("div");
+      p.classList.add("particle");
+      p.style.left = Math.random() * 100 + "vw";
+      p.style.animationDuration = 8 + Math.random() * 10 + "s";
+      p.style.opacity = Math.random();
+      p.style.width = p.style.height = Math.random() * 3 + 2 + "px";
+      particlesContainer.appendChild(p);
+    }
+
+    // Copy buttons
+    document.querySelectorAll(".copy").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const text = btn.parentElement.innerText.replace("Copy", "").trim();
+        navigator.clipboard.writeText(text);
+        btn.innerText = "Copied!";
+        setTimeout(() => btn.innerText = "Copy", 1500);
+      });
+    });
+
+    // Cursor effect
+    const cursor = document.getElementById("cursor");
+    document.addEventListener("mousemove", e => {
+      cursor.style.left = e.clientX + "px";
+      cursor.style.top = e.clientY + "px";
+    });
+    document.addEventListener("mousedown", () => cursor.classList.add("click"));
+    document.addEventListener("mouseup", () => cursor.classList.remove("click"));
+  </script>
 </body>
 </html>
