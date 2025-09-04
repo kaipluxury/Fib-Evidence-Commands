@@ -1,173 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Choose Your Organization</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RP Commands</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1a0033, #220044, #1a0033);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+    /* Crown + Glow */
+    .crown-container {
+      margin-top: 50px;
+      position: relative;
+    }
+    .crown-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 160px;
+      height: 160px;
+      background: radial-gradient(circle, rgba(255,215,0,0.6) 0%, transparent 70%);
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      filter: blur(40px);
+      z-index: 1;
+    }
+    .crown-icon {
+      position: relative;
+      z-index: 2;
+      font-size: 100px;
+      color: #FFD700;
+    }
 
-<style>
-  :root {
-    --bg1:#2b1e63;
-    --bg2:#1a1450;
-    --heroTop:#f6c73c;
-    --heroBottom:#6d4ccf;
-    --cardBase:#ffffff;
-    --yellow:#ffd22e;
-    --ribbon:#e5534b;
-    --text-dark:#1a1a28;
-    --text-muted:#55596d;
-  }
+    /* Title + Tagline */
+    h1 {
+      margin: 20px 0 10px;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+    .tag {
+      background: #e74c3c;
+      color: white;
+      padding: 6px 16px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 30px;
+      text-align: center;
+    }
 
-  body {
-    margin:0;
-    font-family: 'Inter', sans-serif;
-    background: linear-gradient(120deg,var(--bg1),var(--bg2)) fixed;
-    color:#fff;
-  }
+    /* Grid Buttons */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 16px;
+      width: 90%;
+      max-width: 600px;
+      margin-bottom: 30px;
+    }
+    .btn {
+      background: rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 20px 10px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.25s ease-in-out;
+      text-decoration: none;
+      color: #fff;
+      display: block;
+    }
+    .btn:hover {
+      background: rgba(255,255,255,0.15);
+      transform: translateY(-3px);
+    }
 
-  .hero {
-    width:min(880px,90%);
-    height:150px;
-    margin:20px auto 10px;
-    border-radius:6px;
-    background:linear-gradient(180deg,var(--heroTop),var(--heroBottom));
-    display:flex;align-items:center;justify-content:center;
-    position:relative;
-  }
-
-  .crown {
-    width:72px;height:72px;
-  }
-  .heroLabel {
-    position:absolute;top:95px;left:0;right:0;
-    text-align:center;
-    font-weight:700;
-    letter-spacing:.12em;
-    font-size:0.9rem;
-    opacity:.5;
-  }
-
-  .steps {
-    display:flex;justify-content:center;align-items:center;gap:10px;
-    margin:12px 0;
-  }
-  .steps .word {font-weight:700;font-size:0.85rem;letter-spacing:.15em;opacity:.8;}
-  .dot {width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.3);}
-  .dot.active {background:#fff;}
-
-  h1.title {
-    text-align:center;
-    color:var(--yellow);
-    font-family:'Montserrat',sans-serif;
-    font-weight:900;
-    font-size:clamp(28px,5vw,48px);
-    margin:10px 0;
-  }
-
-  .ribbon {
-    display:block;
-    width:max-content;
-    margin:0 auto 20px;
-    background:var(--ribbon);
-    color:#fff;
-    font-weight:700;
-    padding:6px 12px;
-    border-radius:6px;
-  }
-
-  .grid {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-    gap:15px;
-    width:min(900px,90%);
-    margin:0 auto;
-  }
-
-  .card {
-    background:var(--cardBase);
-    border-radius:12px;
-    padding:18px;
-    text-align:center;
-    text-decoration:none;
-    box-shadow:0 6px 12px rgba(0,0,0,.25);
-    transition:.2s;
-  }
-  .card:hover {transform:translateY(-3px);}
-
-  .label {
-    font-family:'Montserrat',sans-serif;
-    font-weight:700;
-    color:var(--text-dark);
-  }
-  .sub {
-    margin-top:5px;
-    color:var(--text-muted);
-    font-weight:600;
-  }
-
-  .consent {
-    max-width:900px;
-    margin:25px auto;
-    font-size:0.8rem;
-    line-height:1.4;
-    color:#fff;
-    background:rgba(0,0,0,.3);
-    padding:12px 16px;
-    border-radius:8px;
-  }
-</style>
+    /* Terms */
+    .terms {
+      max-width: 90%;
+      font-size: 11px;
+      color: #ccc;
+      margin-bottom: 40px;
+    }
+    .terms input {
+      accent-color: #FFD700;
+      margin-right: 6px;
+    }
+  </style>
 </head>
 <body>
-
-  <div class="hero">
-    <!-- Crown -->
-    <svg class="crown" viewBox="0 0 64 64" fill="#ffd22e" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="12" cy="18" r="4"/>
-      <circle cx="32" cy="16" r="5"/>
-      <circle cx="52" cy="18" r="4"/>
-      <path d="M8 22l8 9 8-12 8 12 8-12 8 12 8-9v22a4 4 0 0 1-4 4H12a4 4 0 0 1-4-4V22z"/>
-    </svg>
-    <div class="heroLabel">BUY GRAND COINS</div>
+  <!-- Crown -->
+  <div class="crown-container">
+    <div class="crown-glow"></div>
+    <div class="crown-icon">👑</div>
   </div>
 
-  <div class="steps">
-    <div class="word">STEP</div>
-    <div class="dot active"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-  </div>
+  <!-- Title -->
+  <h1>CHOOSE YOUR ORGANIZATION</h1>
+  <div class="tag">RP COMMANDS</div>
 
-  <h1 class="title">CHOOSE YOUR ORGANIZATION</h1>
-  <span class="ribbon">X2 DONATION IS ACTIVE</span>
-
+  <!-- Grid -->
   <div class="grid">
-    <a href="lspd.html" class="card">
-      <div class="label">ENGLISH #1</div>
-      <div class="sub">LSPD</div>
-    </a>
-    <a href="sahp.html" class="card">
-      <div class="label">ENGLISH #2</div>
-      <div class="sub">SAHP</div>
-    </a>
-    <a href="gov.html" class="card">
-      <div class="label">ENGLISH #3</div>
-      <div class="sub">GOV</div>
-    </a>
-    <a href="sang.html" class="card">
-      <div class="label">GERMAN #1</div>
-      <div class="sub">SANG</div>
-    </a>
-    <a href="fib.html" class="card">
-      <div class="label">GERMAN #2</div>
-      <div class="sub">FIB</div>
-    </a>
+    <a href="fib.html" class="btn">FIB</a>
+    <a href="lspd.html" class="btn">LSPD</a>
+    <a href="sahp.html" class="btn">SAHP</a>
+    <a href="gov.html" class="btn">GOV</a>
+    <a href="sang.html" class="btn">SANG</a>
   </div>
 
-  <div class="consent">
-    I CONSENT TO GRAND RP IMMEDIATELY BEGINNING TO PERFORM THE CONTRACT BY ACTIVATING DIGITAL CONTENT (INCLUDING DIGITAL CURRENCY AND ANY CONTENT ACTIVATED USING DIGITAL CURRENCY) IN MY ACCOUNT. I ACCEPT THAT I LOSE THE RIGHT TO CANCEL THIS CONTRACT AND GET A REFUND ONCE THE DIGITAL CONTENT HAS BEEN ACTIVATED IN MY ACCOUNT
+  <!-- Terms -->
+  <div class="terms">
+    <label>
+      <input type="checkbox" checked>
+      I consent to Grand RP immediately beginning to perform the contract by activating digital content (including RP commands and features) in my account. I accept that I lose the right to cancel this contract and get a refund once the content has been activated.
+    </label>
   </div>
-
 </body>
 </html>
