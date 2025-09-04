@@ -1,133 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RP Commands</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Choose Your Organization</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #1a0033, #220044, #1a0033);
+      background: linear-gradient(180deg, #2c1a47, #0d0d1a);
       color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      min-height: 100vh;
+      text-align: center;
       overflow-x: hidden;
     }
 
-    /* Crown + Glow */
-    .crown-container {
-      margin-top: 50px;
-      position: relative;
-    }
-    .crown-glow {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 160px;
-      height: 160px;
-      background: radial-gradient(circle, rgba(255,215,0,0.6) 0%, transparent 70%);
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-      filter: blur(40px);
-      z-index: 1;
-    }
-    .crown-icon {
-      position: relative;
-      z-index: 2;
-      font-size: 100px;
-      color: #FFD700;
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 30px 15px;
     }
 
-    /* Title + Tagline */
-    h1 {
-      margin: 20px 0 10px;
-      font-size: 28px;
+    .logo {
+      position: relative;
+      margin: 40px auto 20px;
+      width: 100px;
+      height: 100px;
+    }
+
+    .logo img {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.7));
+    }
+
+    .title {
+      font-size: 26px;
       font-weight: 700;
-      letter-spacing: 1px;
-      text-align: center;
-    }
-    .tag {
-      background: #e74c3c;
-      color: white;
-      padding: 6px 16px;
-      border-radius: 6px;
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 30px;
-      text-align: center;
+      text-transform: uppercase;
+      color: #ffd700;
+      margin-top: 15px;
     }
 
-    /* Grid Buttons */
+    .subtitle {
+      display: inline-block;
+      margin: 10px auto 30px;
+      padding: 5px 15px;
+      background: #d32f2f;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 4px;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-      gap: 16px;
-      width: 90%;
-      max-width: 600px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
       margin-bottom: 30px;
     }
-    .btn {
-      background: rgba(255,255,255,0.08);
-      border-radius: 10px;
-      padding: 20px 10px;
-      text-align: center;
+
+    .card {
+      background: #1e1e2f;
+      border-radius: 8px;
+      padding: 25px 0;
       font-weight: 600;
       font-size: 16px;
-      cursor: pointer;
-      transition: all 0.25s ease-in-out;
-      text-decoration: none;
       color: #fff;
-      display: block;
-    }
-    .btn:hover {
-      background: rgba(255,255,255,0.15);
-      transform: translateY(-3px);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    /* Terms */
-    .terms {
-      max-width: 90%;
-      font-size: 11px;
-      color: #ccc;
-      margin-bottom: 40px;
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6), 0 0 10px rgba(255, 215, 0, 0.5);
     }
-    .terms input {
-      accent-color: #FFD700;
-      margin-right: 6px;
+
+    footer {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.6;
+      padding: 0 15px;
     }
   </style>
 </head>
 <body>
-  <!-- Crown -->
-  <div class="crown-container">
-    <div class="crown-glow"></div>
-    <div class="crown-icon">👑</div>
-  </div>
+  <div class="container">
+    <div class="logo">
+      <img src="your-logo.png" alt="Logo">
+    </div>
+    <div class="title">Choose Your Organization</div>
+    <div class="subtitle">RP Commands</div>
 
-  <!-- Title -->
-  <h1>CHOOSE YOUR ORGANIZATION</h1>
-  <div class="tag">RP COMMANDS</div>
+    <div class="grid">
+      <a href="fib.html" class="card">FIB</a>
+      <a href="lspd.html" class="card">LSPD</a>
+      <a href="sahp.html" class="card">SAHP</a>
+      <a href="gov.html" class="card">GOV</a>
+      <a href="sang.html" class="card">SANG</a>
+    </div>
 
-  <!-- Grid -->
-  <div class="grid">
-    <a href="fib.html" class="btn">FIB</a>
-    <a href="lspd.html" class="btn">LSPD</a>
-    <a href="sahp.html" class="btn">SAHP</a>
-    <a href="gov.html" class="btn">GOV</a>
-    <a href="sang.html" class="btn">SANG</a>
-  </div>
-
-  <!-- Terms -->
-  <div class="terms">
-    <label>
-      <input type="checkbox" checked>
-      I consent to Grand RP immediately beginning to perform the contract by activating digital content (including RP commands and features) in my account. I accept that I lose the right to cancel this contract and get a refund once the content has been activated.
-    </label>
+    <footer>
+      By accessing this portal you acknowledge that commands and documentation belong to your respective organization. Unauthorized use is prohibited.
+    </footer>
   </div>
 </body>
 </html>
