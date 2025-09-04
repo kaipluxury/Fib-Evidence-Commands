@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Choose Your Organization</title>
+  <title>RP Commands Portal</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
@@ -13,71 +13,76 @@
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(180deg, #2c1a47, #0d0d1a);
       color: #ffffff;
-      text-align: center;
-      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
     }
 
-    /* Crown glow effect replicated with logo */
+    .container {
+      width: 100%;
+      max-width: 900px; /* perfect width for PC */
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    /* Logo Glow */
     .logo-container {
       position: relative;
-      margin-top: 50px;
+      margin-bottom: 30px;
     }
     .logo-glow {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 160px;
-      height: 160px;
+      width: 220px;
+      height: 220px;
       background: radial-gradient(circle, rgba(255,215,0,0.6) 0%, transparent 70%);
       transform: translate(-50%, -50%);
       border-radius: 50%;
-      filter: blur(40px);
+      filter: blur(50px);
       z-index: 1;
     }
     .logo {
       position: relative;
       z-index: 2;
-      width: 100px;
+      width: 130px;
       height: auto;
-      margin: 0 auto;
     }
 
-    /* Title and red ribbon */
+    /* Title & Ribbon */
     .title {
-      margin: 20px 0 10px;
-      font-size: 28px;
+      margin: 10px 0;
+      font-size: 34px;
       font-weight: 700;
       text-transform: uppercase;
       color: #ffd700;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
     }
     .ribbon {
       display: inline-block;
-      padding: 6px 14px;
+      padding: 8px 18px;
       background: #e74c3c;
       color: #fff;
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 600;
-      border-radius: 4px;
-      margin-bottom: 30px;
+      border-radius: 6px;
+      margin: 20px 0 40px;
       text-transform: uppercase;
     }
 
-    /* Organization grid */
+    /* Grid for Orgs */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 16px;
-      width: 90%;
-      max-width: 600px;
-      margin: 0 auto 30px;
-      padding: 0 15px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      margin-bottom: 50px;
     }
     .org-btn {
       background: rgba(255, 255, 255, 0.08);
-      padding: 20px 0;
-      border-radius: 8px;
-      font-size: 16px;
+      padding: 24px 0;
+      border-radius: 10px;
+      font-size: 18px;
       font-weight: 600;
       text-decoration: none;
       color: #fff;
@@ -85,44 +90,49 @@
     }
     .org-btn:hover {
       background: rgba(255, 255, 255, 0.15);
-      transform: translateY(-4px);
+      transform: translateY(-5px);
     }
 
-    /* Footer consent text */
+    /* Consent Footer */
     .consent {
-      font-size: 12px;
+      font-size: 13px;
       color: #ccc;
-      padding: 0 20px 40px;
-      line-height: 1.4;
+      line-height: 1.6;
+      margin-top: 20px;
+    }
+    .consent input {
+      margin-right: 6px;
     }
   </style>
 </head>
 <body>
-  <!-- Logo with glowing background -->
-  <div class="logo-container">
-    <div class="logo-glow"></div>
-    <img src="https://raw.githubusercontent.com/kaipluxury/Fib-Evidence-Commands/refs/heads/main/grandlogo.webp" alt="Organization Logo" class="logo" />
-  </div>
+  <div class="container">
+    <!-- Logo -->
+    <div class="logo-container">
+      <div class="logo-glow"></div>
+      <img src="https://raw.githubusercontent.com/kaipluxury/Fib-Evidence-Commands/refs/heads/main/grandlogo.webp" alt="Organization Logo" class="logo" />
+    </div>
 
-  <!-- Header -->
-  <div class="title">CHOOSE YOUR ORGANIZATION</div>
-  <div class="ribbon">RP COMMANDS</div>
+    <!-- Header -->
+    <div class="title">CHOOSE YOUR ORGANIZATION</div>
+    <div class="ribbon">RP COMMANDS</div>
 
-  <!-- Organization Buttons -->
-  <div class="grid">
-    <a href="fib.html" class="org-btn">FIB</a>
-    <a href="lspd.html" class="org-btn">LSPD</a>
-    <a href="sahp.html" class="org-btn">SAHP</a>
-    <a href="gov.html" class="org-btn">GOV</a>
-    <a href="sang.html" class="org-btn">SANG</a>
-  </div>
+    <!-- Grid -->
+    <div class="grid">
+      <a href="fib.html" class="org-btn">FIB</a>
+      <a href="lspd.html" class="org-btn">LSPD</a>
+      <a href="sahp.html" class="org-btn">SAHP</a>
+      <a href="gov.html" class="org-btn">GOV</a>
+      <a href="sang.html" class="org-btn">SANG</a>
+    </div>
 
-  <!-- Consent Text -->
-  <div class="consent">
-    <label>
-      <input type="checkbox" checked/>
-      I consent to Grand RP immediately activating RP commands for my organization access. I acknowledge this action is irreversible and entitles no refund once initiated.
-    </label>
+    <!-- Consent -->
+    <div class="consent">
+      <label>
+        <input type="checkbox" checked/>
+        I consent to Grand RP immediately activating RP commands for my organization access. I acknowledge this action is irreversible and entitles no refund once initiated.
+      </label>
+    </div>
   </div>
 </body>
 </html>
