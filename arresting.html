@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Arrest Procedure</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, #2c1a47, #0d0d1a);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+      padding: 30px 20px;
+    }
+
+    .logo-container {
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .logo-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(255,215,0,0.5) 0%, transparent 70%);
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      filter: blur(40px);
+      z-index: 1;
+    }
+    .logo {
+      position: relative;
+      z-index: 2;
+      width: 120px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .title {
+      font-size: 32px;
+      font-weight: 700;
+      color: #ffd900;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .section {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      padding: 18px;
+      margin-bottom: 18px;
+      transition: transform 0.3s;
+    }
+    .section:hover {
+      transform: translateY(-3px);
+    }
+
+    .section h2 {
+      margin-top: 0;
+      color: #ffd900;
+    }
+
+    .copy-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255,255,255,0.1);
+      padding: 8px 12px;
+      border-radius: 6px;
+      margin: 6px 0;
+      font-size: 15px;
+    }
+    .copy-box button {
+      background: #ffd900;
+      border: none;
+      color: #0d0d1a;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .copy-box button:hover {
+      transform: scale(1.05);
+    }
+
+    .note {
+      color: #aaa;
+      font-size: 13px;
+      margin: 4px 0 6px;
+    }
+
+    .footer {
+      text-align: center;
+      color: rgba(200, 200, 200, 0.65);
+      font-size: 11px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Logo -->
+    <div class="title">Arrest Procedure</div>
+
+    <!-- Steps -->
+    <div class="section">
+      <h2>Step 1: Handcuffing</h2>
+      <div class="copy-box"><span>I am going to be putting you in handcuffs now, please stand still.</span><button onclick="copyText(this)">Copy</button></div>
+      <div class="note">Flex Z muscle to handcuff suspect. No weapon equipped. Warn if they resist, use force if needed.</div>
+    </div>
+
+    <div class="section">
+      <h2>Step 2: Move Suspect</h2>
+      <div class="copy-box"><span>I am going to be grabbing you by the arm now</span><button onclick="copyText(this)">Copy</button></div>
+      <div class="note">Flex X muscle to grab suspect by the arm and move to vehicle. Remind them to watch their head..</div>
+    </div>
+
+    <div class="section">
+      <h2>Step 3: Place in Vehicle</h2>
+      <div class="copy-box"><span>I am going to be placing you in the vehicle now, please watch your
+head</span><button onclick="copyText(this)">Copy</button></div>
+      <div class="note">flex G muscle on suspect to place inside. Inform them of all charges.</div>
+    </div>
+
+    <div class="section">
+      <h2>Step 4: Transport & Miranda Rights</h2>
+      <div class="copy-box"><span>(BADGE NUMBER) To Dispatch, I am 10-17 to DOC with (NUMBER) of 10-15 and (ADDIONALS/CONVOY)</span><button onclick="copyText(this)">Copy</button></div>
+      <div class="note">Drive carefully to DOC, avoiding breaking the speed limit</div>
+
+      <h3>Miranda Rights</h3>
+      <div class="copy-box"><span>You are under arrest,</span><button onclick="copyText(this)">Copy</button></div>
+      <div class="copy-box"><span>You have the right to remain silent,</span><button onclick="copyText(this)">Copy</button></div>
+      <div class="copy-box"><span>Anything you say can and will be used against you in the court of law.</span><button onclick="copyText(this)">Copy</button></div>
+      <div class="copy-box"><span>You have the right to an attorney,</span><button onclick="copyText(this)">Copy</button></div>
+      <div class="copy-box"><span>If you cannot afford an attorney, one will be appointed to you by the state if available.</span><button onclick="copyText(this)">Copy</button></div>
+      <div class="copy-box"><span>Do you understand the rights I just read to you?</span><button onclick="copyText(this)">Copy</button></div>
+      <div class="note">If suspect doesn’t respond, wait 5 seconds and repeat rights total 3 times After third ignore, inform rights have been read.</div>
+    </div>
+
+    <div class="section">
+      <h2>Step 5: Lawyer Requests</h2>
+      <div class="copy-box"><span>(BADGE NUMBER) To Dispatch, my 10-15 requests a state lawyer at DOC</span><button onclick="copyText(this)">Copy</button></div>
+      <div class="note">Pause the 25-minute timer if the suspect requests a lawyer.
+        Private lawyer:
+
+Get their phone number immediately.
+Ask to see their lawyer’s license.
+If unavailable after 15 minutes or 3 attempts, offer a state lawyer.
+State lawyer:
+Contact dispatch to check available options.
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Step 6: Arrival at DOC</h2>
+        <h2></h2>
+      <div class="copy-box"><span>Taking you out of the car, Please watch your head</span><button onclick="copyText(this)">Copy</button></div>
+      <div class="note">Approach the vehicle and flex your G muscle on the car. Select passengers > Click</div>
+      <div class="copy-box"><span>I am going to be grabbing you by the arm now</span><button onclick="copyText(this)">Copy</button></div>
+      <div class="copy-box"><span>/me takes the XYZ size Jumpsuit from the Desk</span><button onclick="copyText(this)">Copy</button></div>
+      <div class="note">Don’t forget to use the exact size 10-15 requested—replace XYZ with it.
+        Take the suspect to a cell and lock the door behind you.
+Tell the suspect you will check their pockets for their passport.
+      </div>
+
+    </div>
+    
+    <div class="section"></div>
+<h2>Step 7: Process & Documentation</h2>
+    <div class="note">
+      Escort the suspect to a cell and always lock the doors. Prepare the jumpsuit and let the suspect know you will check their pockets for a passport.
+    </div>
+    <div class="copy-box">
+      <span>/me drops the jumpsuit on the bed</span>
+      <button onclick="copyText(this)">Copy</button>
+    </div>
+    <div class="copy-box">
+      <span>/me reaches into suspect's pockets to check passport</span>
+      <button onclick="copyText(this)">Copy</button>
+    </div>
+    <div class="note">
+      Flex G muscle, check organization info, and collect personal info. Search for any illegal items. Only AMMO-tagged firearms allowed if licensed. Take a photo and log confiscated items. Allow suspect to remove mask, ensure safety if they resist.
+    </div>
+    <div class="note">
+      Inform the suspect of their accusations, sentence, and fines. Pull PDA and enter charges. Ask final questions and prepare to put them in jumpsuit.
+    </div>
+    <div class="copy-box">
+      <span>/me puts suspect in jumpsuit</span>
+      <button onclick="copyText(this)">Copy</button>
+    </div>
+    <div class="note">
+      Flex G muscle, select organization, and arrest the suspect. If sending to Isolation, adjust flex and arrest. Exit cell and lock doors. Confirm completion with dispatch.
+    </div>
+    <div class="copy-box">
+      <span>(BADGE NUMBER) to dispatch, last 10-15 is now 10-99, returning 10-19</span>
+      <button onclick="copyText(this)">Copy</button>
+    </div>
+
+
+    <!-- Footer -->
+    <div class="footer">
+   by <strong>Zenkai (En3)</strong>
+    </div>
+  </div>
+
+  <script>
+    function copyText(btn) {
+      const text = btn.previousElementSibling.textContent;
+      navigator.clipboard.writeText(text);
+    }
+  </script>
+</body>
+</html>
