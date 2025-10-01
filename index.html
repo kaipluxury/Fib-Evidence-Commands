@@ -1,142 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>RP Commands</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RP Commands - Sleek Premium</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-start:#0a0a12;
+  --bg-end:#1b1b30;
+  --accent1:#4e90ff;
+  --accent2:#ff5f7c;
+  --text:#f5f5f5;
+  --text-muted:#a0a0b0;
+  --radius:16px;
+}
 
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(180deg, #2c1a47, #0d0d1a);
-      color: #ffffff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
+/* Hide system cursor */
+body, a, button { cursor: none; }
 
-    .container {
-      width: 100%;
-      max-width: 900px;
-      text-align: center;
-      padding: 30px 20px 20px;
-    }
+/* Reset */
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Montserrat',sans-serif;
+  min-height:100vh;
+  background:linear-gradient(180deg,var(--bg-start),var(--bg-end));
+  color:var(--text);
+  overflow-x:hidden;
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding-top:60px;
+}
 
-    /* Logo Glow */
-    .logo-container {
-      position: relative;
-      margin-bottom: 25px;
-    }
-    .logo-glow {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 260px;
-      height: 260px;
-      background: radial-gradient(circle, rgba(255,215,0,0.55) 0%, transparent 70%);
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-      filter: blur(55px);
-      z-index: 1;
-    }
-    .logo {
-      position: relative;
-      z-index: 2;
-      width: 160px; /* Bigger logo */
-      height: auto;
-    }
+/* Smooth custom cursor */
+.cursor{
+  width:16px;
+  height:16px;
+  border:2px solid var(--accent1);
+  border-radius:50%;
+  position:fixed;
+  top:0;
+  left:0;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+  z-index:9999;
+  background:rgba(255,255,255,0.05);
+}
+.cursor-inner{
+  width:6px; height:6px;
+  background:var(--accent2);
+  border-radius:50%;
+  position:absolute;
+  top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+}
 
-    /* Title & Ribbon */
-    .title {
-      margin: 8px 0 6px; /* reduced spacing */
-      font-size: 34px;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: #ffd900;
-      letter-spacing: 1.4px;
-    }
-    .ribbon {
-      display: inline-block;
-      padding: 8px 18px;
-      background: #e74c3c;
-      color: #fff;
-      font-size: 16px;
-      font-weight: 600;
-      border-radius: 6px;
-      margin: 5px 0 28px; /* closer to title */
-      text-transform: uppercase;
-    }
+/* Main wrapper */
+.wrapper{
+  width:100%;
+  max-width:1100px;
+  padding:0 40px;
+  text-align:center;
+}
 
-    /* Grid for Orgs */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-      gap: 18px;
-      margin-bottom: 30px;
-    }
-    .org-btn {
-      background: rgba(255, 255, 255, 0.08);
-      padding: 20px 0;
-      border-radius: 10px;
-      font-size: 17px;
-      font-weight: 600;
-      text-decoration: none;
-      color: #fff;
-      transition: background 0.3s, transform 0.3s;
-    }
-    .org-btn:hover {
-      background: rgba(255, 255, 255, 0.15);
-      transform: translateY(-4px);
-    }
+/* Logo */
+.logo{
+  width:120px;
+  margin:0 auto 25px;
+  display:block;
+}
 
-    /* Footer */
-    .footer {
-      font-size: 11px;
-      color: rgba(200, 200, 200, 0.65);
-      text-align: center;
-      margin-top: 20px;
-      padding-top: 12px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      line-height: 1.5;
-    }
-    .footer strong {
-      color: rgba(255, 255, 255, 0.8);
-      font-weight: 600;
-    }
-  </style>
+/* Title */
+.title{
+  font-size:36px; font-weight:700;
+  background:linear-gradient(90deg,var(--accent1),var(--accent2));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  margin-bottom:12px;
+  letter-spacing:1.5px;
+}
+
+/* RP COMMANDS Ribbon - gradient + glass effect */
+.ribbon{
+  display:inline-block;
+  font-size:16px; 
+  font-weight:600; 
+  color:#fff;
+  background:linear-gradient(135deg,#a159ffe0,#ff6ec7e7); /* purple-pink gradient */
+  border:1px solid rgba(255,255,255,0.1);
+  backdrop-filter:blur(13px);
+  padding:8px 24px; 
+  border-radius:999px;
+  letter-spacing:1.2px; 
+  text-transform:uppercase;
+  box-shadow:0 1px 30px rgba(255, 0, 234, 0.308); /* subtle depth */
+  transition:all 0.3s;
+  text-align:center;
+  max-width:fit-content;
+  margin:0 auto 40px; /* center */
+}
+.ribbon:hover{
+  transform:translateY(-2px) scale(1.02);
+  box-shadow:0 1px 30px rgba(255, 0, 234, 0.281);
+}
+
+/* Grid */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:22px;
+  margin-bottom:50px;
+}
+
+/* Buttons */
+.org-btn{
+  display:block; padding:20px;
+  border-radius:var(--radius);
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  color:var(--text);
+  font-weight:600;
+  text-decoration:none;
+  position:relative;
+  overflow:hidden;
+  transition:all 0.35s ease;
+}
+.org-btn::before{
+  content:"";
+  position:absolute; top:0; left:-100%;
+  width:100%; height:100%;
+  background:linear-gradient(120deg,transparent,rgba(78,144,255,0.1),transparent);
+  transition:0.5s;
+}
+.org-btn:hover::before{left:100%;}
+.org-btn:hover{transform:translateY(-2px) scale(1.03);}
+
+/* Footer */
+.footer{
+  font-size:12px; color:var(--text-muted);
+  padding-top:18px; line-height:1.5;
+  text-align:center;
+}
+.footer strong{color:var(--accent1); font-weight:600;}
+
+/* Animations */
+.fade{
+  opacity:0;
+  transform:translateY(10px);
+  animation:fadeInUp 0.8s forwards;
+}
+@keyframes fadeInUp{
+  to{opacity:1; transform:translateY(0);}
+}
+</style>
 </head>
 <body>
-  <div class="container">
-    <!-- Logo -->
-    <div class="logo-container">
-      <div class="logo-glow"></div>
-      <img src="https://raw.githubusercontent.com/kaipluxury/Fib-Evidence-Commands/refs/heads/main/163-1632133_1globe-web-icon-white-png-clipart.png" alt="Organization Logo" class="logo" />
-    </div>
 
-    <!-- Header -->
-    <div class="title">CHOOSE YOUR ORGANIZATION</div>
-    <div class="ribbon">RP COMMANDS</div>
+<div class="cursor"><div class="cursor-inner"></div></div>
 
-    <!-- Grid -->
-    <div class="grid">
-      <a href="fib.html" class="org-btn">FIB</a>
-      <a href="lspd.html" class="org-btn">LSPD</a>
-      <a href="sahp.html" class="org-btn">SAHP</a>
-      <a href="gov.html" class="org-btn">GOV</a>
-      <a href="sang.html" class="org-btn">SANG</a>
-      <a href="arresting.html" class="org-btn">ARREST PROCEDURE</a>
-      <a href="training.html" class="org-btn">TRAINING GUIDE</a>
-    </div>
+<div class="wrapper">
+  <img src="https://raw.githubusercontent.com/kaipluxury/Fib-Evidence-Commands/refs/heads/main/163-1632133_1globe-web-icon-white-png-clipart.png" class="logo fade" alt="Logo"/>
+  <div class="title fade" style="animation-delay:0.2s">CHOOSE YOUR ORGANIZATION</div>
+  <div class="ribbon fade" style="animation-delay:0.4s">RP COMMANDS</div>
 
-    <!-- Footer -->
-    <div class="footer">
-      This hub compiles <strong>RP State Organization Commands</strong> for daily use, enhancing your RP experience.<br>
-      Initiative by <strong>Zenkai (En3)</strong> · Suggestions: <strong>@z6sp</strong> on Discord
-    </div>
+  <div class="grid fade" style="animation-delay:0.6s">
+    <a href="fib.html" class="org-btn">FIB</a>
+    <a href="lspd.html" class="org-btn">LSPD</a>
+    <a href="sahp.html" class="org-btn">SAHP</a>
+    <a href="gov.html" class="org-btn">GOV</a>
+    <a href="sang.html" class="org-btn">SANG</a>
+    <a href="arresting.html" class="org-btn">ARREST PROCEDURE</a>
+    <a href="training.html" class="org-btn">TRAINING GUIDE</a>
   </div>
+
+  <div class="footer fade" style="animation-delay:0.8s">
+    This hub compiles <strong>RP State Organization Commands</strong> for daily use, enhancing your RP experience.<br>
+    Initiative by <strong>Zenkai (En3)</strong> · Suggestions: <strong>@z6sp</strong> on Discord
+  </div>
+</div>
+
+<script>
+// Smooth custom cursor
+const cursor=document.querySelector('.cursor');
+const inner=cursor.querySelector('.cursor-inner');
+let mouse={x:window.innerWidth/2,y:window.innerHeight/2};
+let pos={x:mouse.x,y:mouse.y};
+
+document.addEventListener('mousemove',e=>{
+  mouse.x=e.clientX;
+  mouse.y=e.clientY;
+});
+
+function lerp(a,b,t){return a+(b-a)*t;}
+function animate(){
+  pos.x=lerp(pos.x,mouse.x,0.18);
+  pos.y=lerp(pos.y,mouse.y,0.18);
+  cursor.style.transform=`translate3d(${pos.x}px,${pos.y}px,0)`;
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
 </body>
 </html>
