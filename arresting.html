@@ -9,6 +9,9 @@
   <!-- Home Button -->
 <a href="index.html" class="home-btn">🏠 Home</a>
 
+<!-- Arrest Tutorial Button -->
+<a href="https://www.youtube.com/watch?v=BmRTNnWVkao" target="_blank" class="tutorial-btn">📺 Arrest Tutorial</a>
+
 <style>
 .home-btn {
   position: fixed;
@@ -28,6 +31,28 @@
 
 .home-btn:hover {
   background: linear-gradient(135deg, #FFE066, #FFD84D);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+}
+
+.tutorial-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #FFD700, #FFD700);
+  color: #111;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  transition: all 0.25s ease;
+  font-size: 0.9rem;
+  z-index: 100;
+}
+
+.tutorial-btn:hover {
+  background: linear-gradient(135deg, #FFD700, #FFD700);
   transform: translateY(-2px) scale(1.03);
   box-shadow: 0 6px 14px rgba(0,0,0,0.35);
 }
