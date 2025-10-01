@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>State Training Guide</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -15,6 +16,10 @@
     --shadow-color: rgba(0,0,0,0.25);
   }
 
+  * {
+    box-sizing: border-box;
+  }
+
   body {
     margin: 0;
     padding: 50px 20px;
@@ -25,6 +30,7 @@
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
+    transition: background 0.5s ease;
   }
 
   h1 {
@@ -32,21 +38,24 @@
     color: var(--accent-color);
     margin-bottom: 10px;
     text-align: center;
+    transition: color 0.3s ease;
   }
 
   .subtitle {
     font-size: 16px;
     color: #ccc;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
     text-align: center;
+    transition: color 0.3s ease;
   }
 
   .video-list {
     display: grid;
-    gap: 25px;
+    gap: 20px;
     max-width: 900px;
     width: 100%;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    padding-bottom: 50px;
   }
 
   .video {
@@ -55,14 +64,14 @@
     border-radius: 16px;
     padding: 25px;
     box-shadow: 0 8px 25px var(--shadow-color);
-    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.4s ease, background 0.4s ease, box-shadow 0.4s ease;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  .video:hover {
-    transform: translateY(-5px);
+  .video:hover, .video:focus-within {
+    transform: translateY(-6px) scale(1.03);
     background: var(--card-hover);
     box-shadow: 0 12px 35px var(--shadow-color);
   }
@@ -73,10 +82,12 @@
     font-weight: 600;
     font-size: 1.15em;
     text-align: center;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
   }
 
-  .video a:hover {
+  .video a:hover, .video a:focus {
     text-decoration: underline;
+    color: #ffd45c;
   }
 
   .credits {
@@ -84,6 +95,7 @@
     font-size: 13px;
     color: #aaa;
     text-align: center;
+    transition: color 0.3s ease;
   }
 
   /* Home Button */
@@ -103,15 +115,30 @@
     z-index: 100;
   }
 
-  .home-btn:hover {
-    background: linear-gradient(135deg, #ffb400, #ffb400);
-    transform: translateY(-2px) scale(1.03);
+  .home-btn:hover, .home-btn:focus {
+    transform: translateY(-2px) scale(1.05);
     box-shadow: 0 6px 14px rgba(0,0,0,0.35);
   }
 
-  @media (max-width: 600px) {
+  /* Smooth text animation */
+  .video, .video a, h1, .subtitle, .credits {
+    transition: all 0.3s ease-in-out;
+  }
+
+  @media (max-width: 768px) {
+    h1 { font-size: 2.5em; }
+    .subtitle { font-size: 14px; margin-bottom: 30px; }
+    .video a { font-size: 1.05em; }
+    .video { padding: 20px; }
+  }
+
+  @media (max-width: 480px) {
+    body { padding: 30px 15px; }
     h1 { font-size: 2em; }
+    .subtitle { font-size: 13px; margin-bottom: 25px; }
     .video a { font-size: 1em; }
+    .video { padding: 15px; }
+    .video-list { gap: 15px; }
   }
 </style>
 </head>
